@@ -13,7 +13,7 @@ That’s where performance-driven development (PDD) comes in. PDD gives you the 
 | **Robustness**        | You experience inadvertent breaks or degradation during improvements | You ensure systematic improvements with consistent performance     |
 | **Schedule**          | You face unpredictable schedules due to continuous experimentation | You follow a predictable schedule based on ongoing system improvements |
 
-I started this project based on [on Prolego's experiences helping clients](https://prolego.com) with their AI projects. [More about this](#why-i-created-the-pdd-project).
+I started this project based on [Prolego's](https://prolego.com) experiences helping clients with AI projects. [More background](#why-i-created-the-pdd-project).
 
 --*Kevin Dewalt*. Contact me on [LinkedIn](https://www.linkedin.com/in/kevindewalt/) or kevin@prolego.com
 
