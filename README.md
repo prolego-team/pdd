@@ -4,7 +4,7 @@ Welcome! You're here because your GenAI project is stuck, and you want to get it
 By now, you've realized that while building powerful applications with large language models (LLMs) is fast, achieving transparency is challenging. It's tough to know where your application excels, avoid critical errors, make improvements, and predict readiness.
 
 That’s where performance-driven development (PDD) comes in. PDD gives you the clarity you need to confidently manage and deploy GenAI applications.
-#### How PDD Gets Your GenAI Project on Track
+### How PDD Gets Your GenAI Project on Track
 
 | **GenAI Challenge**   | **Your Current Situation**                                       | **Better With PDD**                                                      |
 |-----------------------|-----------------------------------------------------|-------------------------------------------------------------------|
@@ -13,20 +13,21 @@ That’s where performance-driven development (PDD) comes in. PDD gives you the 
 | **Robustness**        | You experience inadvertent breaks or degradation during improvements | You ensure systematic improvements with consistent performance     |
 | **Schedule**          | You face unpredictable schedules due to continuous experimentation | You follow a predictable schedule based on ongoing system improvements |
 
-I started this project based on [on Prolego's experiences helping clients](https://prolego.com) with their AI projects. [More about this](#why-i-created-the-pdd-project).
+I started this project based on [Prolego's](https://prolego.com) experiences helping clients with AI projects. [More background](#why-i-created-the-pdd-project).
+
 --*Kevin Dewalt*. Contact me on [LinkedIn](https://www.linkedin.com/in/kevindewalt/) or kevin@prolego.com
 
-#### Contents
- [Quickstart](#quickstart)
- [Why GenAI Needs a New Approach](#why-genai-needs-a-new-approach)
- [Performance-driven Development Methodology](#performance-driven-development-methodology):
-- [Logically Isolate AI in Your Systems](#logically-isolate-ai-in-your-systems)
-- [Create a Team of AI Systems Engineers](#create-a-team-of-ai-systems-engineers)
-- [Build a Performance Evaluation Framework](#build-a-performance-evaluation-framework)
-- [Iteratively Optimize Your Solution with Customers](#iteratively-optimize-your-solution-with-customers)
+### Contents
+- [Quickstart](#quickstart)
+- [Why GenAI Needs a New Approach](#why-genai-needs-a-new-approach)
+- [Performance-driven Development Methodology](#performance-driven-development-methodology)
+    - [Logically Isolate AI in Your Systems](#logically-isolate-ai-in-your-systems)
+    - [Create a Team of AI Systems Engineers](#create-a-team-of-ai-systems-engineers)
+    - [Build a Performance Evaluation Framework](#build-a-performance-evaluation-framework)
+    - [Iteratively Optimize Your Solution with Customers](#iteratively-optimize-your-solution-with-customers)
 
-[Example: Get a RAG Solution on Track](#example-get-a-rag-solution-on-track)
-[About](#about)
+- [Example: Get a RAG Solution on Track](#example-get-a-rag-solution-on-track)
+- [About](#about)
 
 ---
 
@@ -51,6 +52,7 @@ You can build your first Performance Evaluation Framework in 15 minutes using ge
 
 I call this new approach Performance-Driven Development (PDD) because it prioritizes getting the LLM to perform as needed.
 
+---
 # Why GenAI Needs a New Approach
 AI is ushering in a new golden era for software engineering, but two major obstacles remain. First, AI is still in its infancy, and LLMs are not yet adept at solving most business problems. LLMs are good at processing simple text documents, but they struggle to interact with databases or make complex reasoning decisions. Fortunately, LLMs are getting smarter, faster, and cheaper exponentially, and many of these challenges may be resolved within the next two years.
 
@@ -109,6 +111,7 @@ Providing transparency in traditional software projects is challenging, which is
 
 With no clear way to predict how an LLM will perform, teams struggle to describe how well their solution is working. Unlike traditional software, you can't predict when a GenAI project will be complete because you don’t know what obstacles you’ll face or how you'll overcome them. Additionally, it's difficult to quantify the effectiveness or improvement of your GenAI project.
 
+---
 # Performance-driven Development Methodology
 
 ## Logically Isolate AI in Your Systems
@@ -235,6 +238,7 @@ AI is getting better at an exponentially fast rate, and tomorrow’s LLMs will b
 #### Start with the easiest optimization choices
 Of the available 13 LLM optimization techniques, begin with easier ones like optimizing prompts or testing different LLMs. Only pursue complex solutions like fine-tuning or agents when easier approaches are insufficient.
 
+---
 # Example: Get a RAG Solution on Track
 Let’s walk through a simple example.
 
@@ -319,6 +323,7 @@ PDD has effectively addressed your primary challenges:
 
 Additionally, you’ve gained the confidence of your leadership. You’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
 
+---
 # About 
 ## Why I Created the PDD Project
 *by [Kevin Dewalt](https://www.linkedin.com/in/kevindewalt/)*
