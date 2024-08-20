@@ -1,7 +1,7 @@
 # About
-You can quickly build powerful applications with large language models (LLMs). However, transparency can be challenging: identifying where your application excels, avoiding critical errors, making improvements, and predicting readiness.
+Welcome! You can quickly build powerful applications with large language models (LLMs). Unfortunately, achieving transparency can be tough—knowing where your application excels, avoiding critical errors, making improvements, and predicting readiness.
 
-Performance-driven development (PDD) provides the transparency needed to effectively manage and deploy GenAI applications.
+That’s where performance-driven development (PDD) comes in. PDD gives you the clarity needed to confidently manage and deploy GenAI applications.
 
 ### GenAI Challenges: Current Situation vs. Improvement with PDD
 
