@@ -1,12 +1,20 @@
-# Contributions
+# About
+You can quickly build powerful applications with large language models (LLMs). However, transparency can be challenging: identifying where your application excels, avoiding critical errors, improving it, and predicting readiness.
+
+Performance-driven development (PDD) provides the transparency needed to effectively manage and deploy GenAI applications.
+
+| **GenAI Challenge**   | **Currently**                                       | **With PDD**                                                      |
+|-----------------------|-----------------------------------------------------|-------------------------------------------------------------------|
+| **Performance**       | General observations from demos or examples         | Specific, quantified at the task level                            |
+| **Cost and Latency**  | General estimates, optimized at the app level       | Predictable, optimized costs and speed at task and usage levels   |
+| **Improvements**      | "Iterate by feel" based on general customer feedback| Clear, measurable task-level optimization                         |
+| **Robustness**        | Inadvertent breaks or degradation during improvements| Systematic improvements ensuring consistent performance           |
+| **Schedule**          | Unpredictable, continuous experimentation           | Predictable schedule based on ongoing system improvements         |
+
+## Contributions
+
+
 Thanks for taking the time to review. Any feedback on any section is helpful, however small.
-
-Please leave comments in the document so I can thank you in the acknowledgments.
-
-## Acknowledgments
-LLMs are new, and unfortunately, separating the AI hypesters and the real practitioners isn’t easy. Here are some pros whose work I admire who helped make this document better.
-
-Thank you Justin Pounders, Craig Dewalt, Shanif Dhanani (founder of Locusive),…
 
 # Quickstart
 Large language models (LLMs) enable rapid development of powerful solutions, but they produce inconsistent and unpredictable results. You can quickly produce a proof-of-concept that mostly works, but you’ll struggle to pinpoint where it’s succeeding, where it’s failing, how to improve it, how to keep it on track, and how to predict when you’ll be done. In other words, you—and your leadership—will quickly become frustrated due to the lack of transparency in your LLM project. Here’s how you can get your LLM project on track.
@@ -295,3 +303,8 @@ PDD has effectively addressed your primary challenges:
 - You can detect potential issues in your solution early.
 
 Additionally, you’ve gained the confidence of your leadership. You’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
+
+# Acknowledgments
+LLMs are new, and unfortunately, separating the AI hypesters and the real practitioners isn’t easy. Here are some pros whose work I admire who helped make this document better.
+
+Thank you Justin Pounders, Craig Dewalt, Shanif Dhanani (founder of Locusive),…
