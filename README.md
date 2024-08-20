@@ -4,7 +4,7 @@ Welcome! You're here because your GenAI project is stuck, and you want to get it
 By now, you've realized that while building powerful applications with large language models (LLMs) is fast, achieving transparency is challenging. It's tough to know where your application excels, avoid critical errors, make improvements, and predict readiness.
 
 That’s where performance-driven development (PDD) comes in. PDD gives you the clarity you need to confidently manage and deploy GenAI applications.
-#### How PDD Gets Your GenAI Project on Track
+### How PDD Gets Your GenAI Project on Track
 
 | **GenAI Challenge**   | **Your Current Situation**                                       | **Better With PDD**                                                      |
 |-----------------------|-----------------------------------------------------|-------------------------------------------------------------------|
@@ -17,7 +17,7 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 
 --*Kevin Dewalt*. Contact me on [LinkedIn](https://www.linkedin.com/in/kevindewalt/) or kevin@prolego.com
 
-#### Contents
+### Contents
 - [Quickstart](#quickstart)
 - [Why GenAI Needs a New Approach](#why-genai-needs-a-new-approach)
 - [Performance-driven Development Methodology](#performance-driven-development-methodology)
