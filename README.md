@@ -1,23 +1,36 @@
-# About
-Welcome! You can quickly build powerful applications with large language models (LLMs). Unfortunately, achieving transparency can be tough—knowing where your application excels, avoiding critical errors, making improvements, and predicting readiness.
+# Get Your GenAI Project on Track
+Welcome! You're here because your GenAI project is stuck, and you want to get it back on track.
 
-That’s where performance-driven development (PDD) comes in. PDD gives you the clarity needed to confidently manage and deploy GenAI applications.
+By now, you've realized that while building powerful applications with large language models (LLMs) is fast, achieving transparency is challenging. It's tough to know where your application excels, avoid critical errors, make improvements, and predict readiness.
 
-### GenAI Challenges: Current Situation vs. Improvement with PDD
+That’s where performance-driven development (PDD) comes in. PDD gives you the clarity you need to confidently manage and deploy GenAI applications.
+#### How PDD Gets Your GenAI Project on Track
 
 | **GenAI Challenge**   | **Your Current Situation**                                       | **Better With PDD**                                                      |
 |-----------------------|-----------------------------------------------------|-------------------------------------------------------------------|
-| **Performance**       | You rely on general observations from demos or examples | You get specific, quantified insights at the task level            |
-| **Cost and Latency**  | You can only provide general estimates, optimized at the app level | You forecast cost and speed and optimize at the task level |
-| **Improvements**      | You "iterate by feel" based on general customer feedback | You optimize based on specific, measurable performance limitations                 |
+| **Performance**       | You rely on general observations from demos and "iterate by feel" | You can quantify performance and optimize based on measurable limitations           |
+| **Cost and Latency**  | You can only provide general estimates, optimized at the app level | You can forecast cost and speed, and optimize both for users and tasks |   |
 | **Robustness**        | You experience inadvertent breaks or degradation during improvements | You ensure systematic improvements with consistent performance     |
 | **Schedule**          | You face unpredictable schedules due to continuous experimentation | You follow a predictable schedule based on ongoing system improvements |
 
-## Contributions
+I started this project based on [on Prolego's experiences helping clients](https://prolego.com) with their AI projects. [More about this](#why-i-created-the-pdd-project).
+--*Kevin Dewalt*. Contact me on [LinkedIn](https://www.linkedin.com/in/kevindewalt/) or kevin@prolego.com
 
+#### Contents
+ [Quickstart](#quickstart)
+ [Why GenAI Needs a New Approach](#why-genai-needs-a-new-approach)
+ [Performance-driven Development Methodology](#performance-driven-development-methodology):
+- [Logically Isolate AI in Your Systems](#logically-isolate-ai-in-your-systems)
+- [Create a Team of AI Systems Engineers](#create-a-team-of-ai-systems-engineers)
+- [Build a Performance Evaluation Framework](#build-a-performance-evaluation-framework)
+- [Iteratively Optimize Your Solution with Customers](#iteratively-optimize-your-solution-with-customers)
 
-Thanks for taking the time to review. Any feedback on any section is helpful, however small.
+[Example: Get a RAG Solution on Track](#example-get-a-rag-solution-on-track)
+[About](#about)
 
+---
+
+ <a id="quickstart"></a>
 # Quickstart
 Large language models (LLMs) enable rapid development of powerful solutions, but they produce inconsistent and unpredictable results. You can quickly produce a proof-of-concept that mostly works, but you’ll struggle to pinpoint where it’s succeeding, where it’s failing, how to improve it, how to keep it on track, and how to predict when you’ll be done. In other words, you—and your leadership—will quickly become frustrated due to the lack of transparency in your LLM project. Here’s how you can get your LLM project on track.
 
@@ -143,7 +156,7 @@ It has four components:
 3. An evaluation workflow runs the representative set of data through your solution and evaluates its performance on the tasks.
 4. A performance report showing how well your solution works and calculates key metrics.
 
-### Representative set of data and tasks
+### 1. Representative set of data and tasks
 The foundation of your framework is a representative set of data and tasks tailored to the solution you’re building. Table 2 lists examples for common LLM solutions.
 
 | LLM Solution           | Data                   | Tasks                                            |
@@ -162,12 +175,12 @@ Developing a representative set requires significant experience, experimentation
 
 Some teams also use generated data to mitigate security and legal risks, enabling faster and more efficient testing of new LLMs.
 
-### AI Solution
+### 2. AI Solution
 The AI solution is the software that transforms the input data into an output by interacting with the LLM. Examples are prompts, data processing scripts, interfaces, prompt orchestrations, agents, and tools.
 
 The AI Solution is what you will deploy into production as illustrated previously in Figure 1, including the interfaces to other system components.
 
-### Evaluation workflow
+### 3. Evaluation workflow
 You need a scalable way to measure how well your system is performing by running the representative tasks and data sets through your solution and comparing the expected vs the actual outputs.
 
 Table 3 lists three common options teams are currently using.
@@ -184,7 +197,7 @@ OpenAI and others have advocated for using LLMs for your evaluation. In practice
 
 Additionally, your evaluation workflow will gather key system metrics such as cost, token count, and latency. It must also have a means of providing transparency into the LLM’s sensitivity, such as running the LLMs at different temperatures to generate a confidence interval.
 
-### Performance evaluation report
+### 4. Performance evaluation report
 Finally, your framework will have a performance evaluation report that gives you transparency into your solution. The report should provide granular performance visibility into every task in your set and higher-level solution metrics.
 
 The evaluation report typically contains the following for every task:
@@ -306,7 +319,35 @@ PDD has effectively addressed your primary challenges:
 
 Additionally, you’ve gained the confidence of your leadership. You’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
 
-# Acknowledgments
+# About 
+## Why I Created the PDD Project
+*by [Kevin Dewalt](https://www.linkedin.com/in/kevindewalt/)*
+
+I’ve been programming computers for over 40 years, and the arrival of generative AI marks the most significant shift in software engineering I’ve ever seen. Large Language Models (LLMs) are set to revolutionize the field, enabling smaller teams to build more powerful solutions at unprecedented speeds, while drastically reducing development costs. This efficiency will allow us to create AI-powered applications that not only outperform current alternatives but also tackle increasingly complex problems.
+
+We’re standing on the brink of a new golden era for software engineering, but two major obstacles stand in our way. First, AI is still in its infancy, and LLMs are not yet adept at solving most business problems. Extensive customization is required to enable LLMs to access structured data or perform beyond basic reasoning. The good news is that LLMs are improving at an exponential rate, and we can expect many of these challenges to be resolved within the next two years.
+
+The second challenge is that we lack effective methodologies for developing solutions with LLMs. Many teams are trying to repurpose existing tools and approaches, with mixed results. Application frameworks like Ruby on Rails and Django revolutionized data-driven web development, but frameworks like LangChain are currently hindering efficiency. Similarly, product strategies like Agile and Lean Startup, which are designed to mitigate adoption and market risks, are distracting teams from the more pressing challenge of getting LLMs to perform as intended.
+
+As a result, many LLM projects are stalled. Teams struggle with a lack of transparency into how their solutions are functioning, and they lack the tools to determine whether they should refine their models through fine-tuning or by implementing more complex prompt orchestration. They can’t predict when their solution will be good enough or how much it will cost. Even worse, many are investing time and resources into building software that will be obsolete within two years.
+
+Fortunately, the most effective engineering teams are pioneering a new approach, which we call Performance-Driven Development (PDD). This methodology addresses the two central challenges of working with LLMs: (1) they behave stochastically, and (2) they are improving at an exponentially-fast rate. PDD will help you get LLMs to perform as desired.
+
+My journey with PDD began in April 2023, after reading [Sparks of Artificial General Intelligence: Early experiments with GPT-4](https://arxiv.org/abs/2303.12712), by Sébastien Bubeck et al. It became immediately clear that software engineering as we knew it was about to undergo a permanent transformation. I began developing LLM-based solutions with Justin Pounders and other engineers at Prolego, sharing our findings through open-source examples and [weekly YouTube videos](https://www.youtube.com/channel/UCLx-I9NTlkPRFzJtsB9_EEw). We also engaged with numerous teams and reviewed case studies from companies that were seeing early success.
+
+Over time, it became clear that much of my previous experience in software, machine learning, and data science didn’t apply to generative AI. I was struck by how quickly our team could build solutions and how little actual code was required. At the same time, I realized the importance of maintaining transparency into how LLMs were performing at the task level to avoid getting stuck in a perpetual cycle of “iterate by feel.” We also connected with other engineering teams who were converging on similar issues.
+
+By April 2024, the key concepts of PDD had crystallized, and we began integrating performance evaluation frameworks into our client work. Partnering with our clients’ engineering teams, we were able to turn around stalled projects in a matter of weeks, providing the transparency and predictability they needed. PDD proved so effective that Russ and I decided to refocus Prolego entirely around this methodology.
+
+This project is my attempt to document the PDD methodology, based on what’s actually working for those of us who make a living by delivering solutions that solve real problems. If that resonates with you, I hope this guide helps you as much as it’s helped us—and that together, we can continue to push the boundaries of what’s possible.
+
+## Contribute
+Please submit issues and pull requests of your suggestions or feedback. Or email me at kevin@prolego.com.
+
+## Acknowledgments
 LLMs are new, and unfortunately, separating the AI hypesters and the real practitioners isn’t easy. Here are some pros whose work I admire who helped make this document better.
 
-Thank you Justin Pounders, Craig Dewalt, Shanif Dhanani (founder of Locusive),…
+Thank you Justin Pounders, Craig Dewalt, Shanif Dhanani, 
+
+**Copyright**
+Copyright 2024, Prolego, Inc. All rights reserved. 
