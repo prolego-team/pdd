@@ -7,7 +7,7 @@ Performance-driven development (PDD) provides the transparency needed to effecti
 |-----------------------|-----------------------------------------------------|-------------------------------------------------------------------|
 | **Performance**       | You rely on general observations from demos or examples | You get specific, quantified insights at the task level            |
 | **Cost and Latency**  | You work with general estimates, optimized at the app level | You achieve predictable, optimized costs and speed at task and usage levels |
-| **Improvements**      | You "iterate by feel" based on general customer feedback | You gain clear, measurable task-level optimization                 |
+| **Improvements**      | You "iterate by feel" based on general customer feedback | You optimize based on specific, measureable performance limitations                 |
 | **Robustness**        | You experience inadvertent breaks or degradation during improvements | You ensure systematic improvements with consistent performance     |
 | **Schedule**          | You face unpredictable schedules due to continuous experimentation | You follow a predictable schedule based on ongoing system improvements |
 
