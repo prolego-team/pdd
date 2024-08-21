@@ -35,24 +35,31 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 # Quickstart
 Large language models (LLMs) enable rapid development of powerful solutions, but they produce inconsistent and unpredictable results. You can quickly produce a proof-of-concept that mostly works, but you’ll struggle to pinpoint where it’s succeeding, where it’s failing, how to improve it, how to keep it on track, and how to predict when you’ll be done. In other words, you—and your leadership—will quickly become frustrated due to the lack of transparency in your LLM project. Here’s how you can get your LLM project on track.
 
+## Systems Design and Team
 Segment your AI solution—the system components that interface with LLMs—from everything else and assign a team of AI Systems Engineers to work on it as shown in Figure Q1.
 
 ![alt text](images/FigureQ1.png)
+*Figure Q1 - Segment the AI Solution from the rest of your infrastructure through interfaces (e.g. JSON specs).*
 
-The AI Systems Engineers will build the AI solution with a Performance Evaluation Framework. This framework will give you transparency into your LLM project, and it consists of four parts as illustrated in Figure Q2:
+## Performance Evaluation Framework
 
-1. A representative set of data and tasks that cover the scenarios the LLM will encounter.
-2. The AI Solution. Interfaces to LLMs, prompts, tools, agents, orchestrations, and data preparation. This is the deployable AI Solution from Figure Q1.
-3. An evaluation workflow generates performance results based on your representative data and task set.
-4. A performance report that reveals how well your solution is working, how much it costs, and how fast it runs.
+The AI Systems Engineers will build the AI solution with a Performance Evaluation Framework. This framework will give you transparency into your LLM project, and it consists of four parts as illustrated in Figure Q2.
+
+1. A representative **set of data and tasks** that cover the scenarios the LLM will encounter.
+2. The **AI solution**. Interfaces to LLMs, prompts, tools, agents, orchestrations, and data preparation. This is the deployable **AI solution** from Figure Q1.
+3. An **evaluation workflow** generates performance results based on your representative data and task set.
+4. A **performance report** that reveals how well your solution is working, how much it costs, and how fast it runs.
+
+![alt text](<images/Figure Q2.png>)
+*Figure Q2 - Create transparency with a performance evaluation framework.*
 
 Get feedback from your customer with the performance report, and iteratively make your performance framework better. You’ll deploy your AI solution when it works well enough.
 
-While this approach may sound complex, it’s simply a different way of working on a project powered by LLMs.
-
-You can build your first Performance Evaluation Framework in 15 minutes using generated data and spreadsheets.
+## PDD isn't hard - just different
 
 I call this new approach Performance-Driven Development (PDD) because it prioritizes getting the LLM to perform as needed.
+
+While PDD may sound complex, it’s simply a different way of working on a project powered by LLMs. You can build your first performance evaluation framework in 15 minutes using generated data and spreadsheets.
 
 ---
 # Why GenAI Needs a New Approach
