@@ -1,15 +1,56 @@
+<!--
+# PDD Style Guide
+
+### General Guidelines
+- **Consistency**: Maintain a consistent style throughout the document.
+- **Tone**: Use a professional yet approachable tone. Engage the reader directly with "you."
+- **Voice**: Prefer active voice over passive voice for clarity and directness.
+
+### Capitalization
+- **Titles and Headings**: Use Title Case for all headings. Example: `## Building a Performance Evaluation Framework`
+- **Performance-Driven Development (PDD)**: Always capitalize "Performance-Driven Development" and use the acronym "PDD" after the first mention.
+- **Performance Evaluation Framework**: Use sentence case for "performance evaluation framework," even when referring to it as a key term.
+- **AI Solution**: Capitalize "AI Solution" when referring to the specific deployable system components.
+
+### Formatting
+- **Bold**: Use bold for key terms or phrases to highlight their importance. Example: "**AI solution**"
+- **Italics**: Use italics for figure captions or to add emphasis in specific cases. Example: "*Figure Q1 - Segment the AI solution from the rest of your infrastructure through interfaces (e.g., JSON specs).*"
+- **Lists**: Use bulleted lists for enumerating items or steps, and numbered lists for ordered processes.
+
+### Punctuation
+- **Commas**: Use the Oxford comma for clarity in lists. Example: "performance, cost, and speed."
+- **Hyphens and Dashes**: Use hyphens for compound modifiers (e.g., "large-scale project") and em dashes for interruptions or additional emphasis (e.g., "PDD isn't hard—just different").
+
+### Language
+- **Technical Terms**: Explain technical terms briefly when first introduced, then use them consistently.
+- **Acronyms**: Spell out acronyms upon first use, followed by the acronym in parentheses. Use the acronym in subsequent mentions. Example: "Large Language Models (LLMs)."
+
+### Structure
+- **Introduction**: Start with a welcoming and context-setting introduction.
+- **Headings**: Use clear and descriptive headings to guide the reader through the document.
+- **Conclusion**: End sections with a summary or next steps where applicable.
+
+### Examples
+- **Correct**: Performance-Driven Development (PDD)
+- **Incorrect**: Performance-driven Development (PDD)
+
+- **Correct**: performance evaluation framework
+- **Incorrect**: Performance Evaluation Framework
+-->
+
 # Get Your GenAI Project on Track
 Welcome! You're here because your GenAI project is stuck, and you want to get it back on track.
 
-By now, you've realized that while building powerful applications with large language models (LLMs) is fast, achieving transparency is challenging. It's tough to know where your application excels, avoid critical errors, make improvements, and predict readiness.
+By now, you've likely noticed that while building with large language models (LLMs) is fast, transparency is challenging. It’s tough to know where your application excels, avoid critical errors, make improvements, and predict readiness.
 
-That’s where performance-driven development (PDD) comes in. PDD gives you the clarity you need to confidently manage and deploy GenAI applications.
+That’s where Performance-Driven Development (PDD) comes in. PDD gives you the clarity you need to confidently manage and deploy GenAI applications.
+
 ### How PDD Gets Your GenAI Project on Track
 
 | **GenAI Challenge**   | **Your Current Situation**                                       | **Better With PDD**                                                      |
 |-----------------------|-----------------------------------------------------|-------------------------------------------------------------------|
 | **Performance**       | You rely on general observations from demos and "iterate by feel" | You can quantify performance and optimize based on measurable limitations           |
-| **Cost and Latency**  | You can only provide general estimates, optimized at the app level | You can forecast cost and speed, and optimize both for users and tasks |   |
+| **Cost and Latency**  | You can only provide general estimates, optimized at the app level | You forecast cost and speed, and optimize both for users and tasks |
 | **Robustness**        | You experience inadvertent breaks or degradation during improvements | You ensure systematic improvements with consistent performance     |
 | **Schedule**          | You face unpredictable schedules due to continuous experimentation | You follow a predictable schedule based on ongoing system improvements |
 
@@ -20,7 +61,7 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 ### Contents
 - [Quickstart](#quickstart)
 - [Why GenAI Needs a New Approach](#why-genai-needs-a-new-approach)
-- [Performance-driven Development Methodology](#performance-driven-development-methodology)
+- [Performance-Driven Development Methodology](#performance-driven-development-methodology)
     - [Logically Isolate AI in Your Systems](#logically-isolate-ai-in-your-systems)
     - [Create a Team of AI Systems Engineers](#create-a-team-of-ai-systems-engineers)
     - [Build a Performance Evaluation Framework](#build-a-performance-evaluation-framework)
@@ -31,17 +72,18 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 
 ---
 
- <a id="quickstart"></a>
-# Quickstart
-Large language models (LLMs) allow rapid development of powerful solutions, but they often produce inconsistent and unpredictable results. You can quickly create a proof-of-concept that mostly works, but pinpointing successes, failures, improvements, and project completion can be challenging. This lack of transparency can lead to frustration for you and your leadership. Here's how to get your LLM project on track.
+<a id="quickstart"></a>
 
-## Systems Design and Team
+# Quickstart
+Large language models (LLMs) allow rapid development of powerful solutions, but they often produce inconsistent and unpredictable results. You can quickly create a proof-of-concept that mostly works, but pinpointing successes, failures, improvements, and project completion can be challenging. This lack of transparency frustrates both you and your leadership. Here's how to get your LLM project on track.
+
+## Designing Your Systems and Teams
 Separate your AI solution—the components interfacing with LLMs—from the rest of your infrastructure. Assign a team of [AI systems engineers](#create-a-team-of-ai-systems-engineers) to work on it, as shown in Figure Q1.
 
 ![alt text](images/FigureQ1.png)
 *Figure Q1 - Segment the AI solution from the rest of your infrastructure through interfaces (e.g., JSON specs).*
 
-## Performance Evaluation Framework
+## Building a Performance Evaluation Framework
 
 Your AI systems engineers will build the AI solution using a performance evaluation framework, which provides transparency into your LLM project. This framework includes four parts, as shown in Figure Q2:
 
@@ -53,9 +95,9 @@ Your AI systems engineers will build the AI solution using a performance evaluat
 ![alt text](<images/Figure Q2.png>)
 *Figure Q2 - Create transparency with a performance evaluation framework.*
 
-Use the performance report to get customer feedback and iteratively improve your framework. Deploy your AI solution when it meets the necessary performance standards.
+Use the performance report to gather customer feedback and iteratively improve your framework. Deploy your AI solution when it meets the necessary performance standards.
 
-## PDD isn't hard—just different
+## PDD Isn't Hard—Just Different
 
 This approach, called Performance-Driven Development (PDD), focuses on getting the LLM to perform as needed.
 
