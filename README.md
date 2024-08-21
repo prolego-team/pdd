@@ -37,6 +37,8 @@ Large language models (LLMs) enable rapid development of powerful solutions, but
 
 Segment your AI solution—the system components that interface with LLMs—from everything else and assign a team of AI Systems Engineers to work on it as shown in Figure Q1.
 
+![alt text](images/FigureQ1.png)
+
 The AI Systems Engineers will build the AI solution with a Performance Evaluation Framework. This framework will give you transparency into your LLM project, and it consists of four parts as illustrated in Figure Q2:
 
 1. A representative set of data and tasks that cover the scenarios the LLM will encounter.
