@@ -159,42 +159,50 @@ Providing transparency in traditional software projects is challenging, which is
 With no clear way to predict how an LLM will perform, teams struggle to describe how well their solution is working. Unlike traditional software, you can't predict when a GenAI project will be complete because you don’t know what obstacles you’ll face or how you'll overcome them. Additionally, it's difficult to quantify the effectiveness or improvement of your GenAI project.
 
 ---
-# Performance-driven Development Methodology
+# Performance-Driven Development Methodology
 
 ## Logically Isolate AI in Your Systems
 
-### Tightly integrating LLM API calls creates scaling challenges
-Many teams begin their GenAI projects by adding LLM API calls from within their existing code libraries as shown in Figure X. While this is a quick way to start, and it works fine for simple, low-risk tasks, it creates scaling challenges:
+### Tightly Integrating LLM API Calls Creates Scaling Challenges
+Many teams begin their GenAI projects by adding LLM API calls within their existing code libraries, as shown in Figure PD1. 
+
+![alt text](<images/Figure PD1.png>)
+*Figure PD1 - You can begin a GenAI project by adding LLM API calls within your existing data workflow and applications. While this design works for simple, low-risk tasks, it doesn’t provide the transparency and predictability needed for most workflows.*
+
+While this is a quick way to start and works for simple, low-risk tasks, it creates scaling challenges:
 
 - It obscures what the LLM is doing.
-- It prevents you from rapidly testing and integrating new LLMs and approaches.
+- It prevents rapid testing and integration of new LLMs and approaches.
 - It creates code redundancy.
 
 ### Create Interfaces with Your AI Solution
-A more effective approach is to isolate the AI components of your system—such as LLM interfaces, prompts, prompt orchestration agents, and tools—from the rest of the system's architecture as illustrated in Figure Y.
+A more effective approach is to isolate the AI components of your system—such as LLM interfaces, prompts, prompt orchestration agents, and tools—from the rest of the system's architecture, as illustrated in Figure PD2.
+
+![alt text](<images/Figure PD2.png>)
+*Figure PD2 - Logically isolate your AI solution from the rest of your system. The AI solution consists of components that optimize the LLM’s performance, such as prompts, data preprocessing, prompt orchestrations, and tools.*
 
 This design has several scaling advantages:
 
 - It allows you to build a team of AI systems engineering specialists.
 - It lets you offer similar AI capabilities, such as text processing, across the company.
-- It allows you to more quickly leverage new LLMs or approaches.
+- It enables quicker adoption of new LLMs or approaches.
 
 Finally, it allows you to create transparency by building an LLM performance evaluation framework.
 
 ### Avoid LangChain and Similar Frameworks
-At best, frameworks like LangChain will make it slightly easier to solve the easy problems. Unfortunately, they further obscure what your LLM is doing and reduce your transparency. We have yet to encounter an experienced team that recommends them for production.
+At best, frameworks like LangChain make it slightly easier to solve simple problems. Unfortunately, they further obscure what your LLM is doing and reduce transparency. We have yet to encounter an experienced team that recommends them for production.
 
 ## Create a Team of AI Systems Engineers
 
-### LLMs are a new programming interface that requires specialization
-Building solutions with LLMs isn’t traditional data science, programming, or machine learning. LLMs are a new programming interface, and it takes 6-12 months to become proficient. We call this role an AI systems engineer, combining a data scientist’s experimental mindset with a systems engineer’s big-picture view.
+### LLMs Are a New Programming Interface That Requires Specialization
+Building solutions with LLMs isn’t traditional data science, programming, or machine learning. LLMs are a new programming interface, and it takes 6-12 months to become proficient. We call this role an *AI systems engineer*, combining a data scientist’s experimental mindset with a systems engineer’s big-picture view.
+
+Here is an [AI systems engineer job description](https://www.prolego.com/reports/ai-systems-engineer-job-description) and a video, [The Surprising Skills You Need to Build LLM Applications](https://youtu.be/Wp6LP8yk4I8).
 
 Engineers from data science, software engineering, or systems engineering backgrounds can transition into this role with time and dedication. Even product and project managers with minimal technical experience are successfully building LLM-based solutions.
 
-### Assign a dedicated engineering team to focus on LLM optimization
-The AI Systems Engineers will build the components that optimize the LLM’s performance as shown in Figure Z.
-
-The AI Systems Engineers will build and optimize the AI Solution using the performance evaluation framework.
+### Assign a Dedicated Engineering Team to Focus on LLM Optimization
+AI systems engineers will build the components that optimize the LLM’s performance, as shown in Figure PD2 above, through a performance evaluation framework.
 
 ## Build a Performance Evaluation Framework
 You need a new approach for building solutions with LLMs, one that provides you with granular visibility into how well your solution is working. A performance evaluation framework as illustrated in Figure 2 provides this transparency.
