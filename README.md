@@ -64,7 +64,7 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 - [Performance-Driven Development Methodology](#performance-driven-development-methodology)
     - [Logically Isolate AI in Your Systems](#logically-isolate-ai-in-your-systems)
     - [Create a Team of AI Systems Engineers](#create-a-team-of-ai-systems-engineers)
-    - [Build a Performance Evaluation Framework](#build-a-performance-evaluation-framework)
+    - [Build a performance evaluation framework](#build-a-performance-evaluation-framework)
     - [Iteratively Optimize Your Solution with Customers](#iteratively-optimize-your-solution-with-customers)
 
 - [Example: Get a RAG Solution on Track](#example-get-a-rag-solution-on-track)
@@ -73,9 +73,8 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 ---
 
 <a id="quickstart"></a>
-
 # Quickstart
-Large language models (LLMs) allow rapid development of powerful solutions, but they often produce inconsistent and unpredictable results. You can quickly create a proof-of-concept that mostly works, but pinpointing successes, failures, improvements, and project completion can be challenging. This lack of transparency frustrates both you and your leadership. Here's how to get your LLM project on track.
+Large language models (LLMs) allow rapid development of powerful solutions, but they often produce inconsistent and unpredictable results. You can quickly create a proof-of-concept that mostly works, but pinpointing successes, failures, improvements, and project completion can be challenging. This lack of transparency frustrates you and your leadership. Here's how to get your LLM project on track.
 
 ## Designing Your Systems and Teams
 Separate your AI solution—the components interfacing with LLMs—from the rest of your infrastructure. Assign a team of [AI systems engineers](#create-a-team-of-ai-systems-engineers) to work on it, as shown in Figure Q1.
@@ -83,7 +82,7 @@ Separate your AI solution—the components interfacing with LLMs—from the rest
 ![alt text](images/FigureQ1.png)
 *Figure Q1 - Segment the AI solution from the rest of your infrastructure through interfaces (e.g., JSON specs).*
 
-## Building a Performance Evaluation Framework
+## Building a performance evaluation framework
 
 Your AI systems engineers will build the AI solution using a performance evaluation framework, which provides transparency into your LLM project. This framework includes four parts, as shown in Figure Q2:
 
@@ -104,56 +103,57 @@ This approach, called Performance-Driven Development (PDD), focuses on getting t
 While PDD may seem complex, it’s simply a different way to approach LLM-powered projects. You can build your first performance evaluation framework in 15 minutes using generated data and spreadsheets.
 
 ---
-# Why GenAI Needs a New Approach
-Your leadership has finally approved funding for your first generative AI project. You gather data and begin building your proof-of-concept (POC). Here’s what to expect over the next 3-6 months:
 
-- Rapid early results will excite customers, but progress will slow as engineers disagree on the best path to make improvements.
+# Why GenAI Needs a New Approach
+Your leadership has finally approved funding for your first generative AI project. You gather data and begin building your proof of concept (POC). Here’s what to expect over the next 3-6 months:
+
+- Rapid early results will excite customers, but progress will slow as engineers disagree on the best path for improvements.
 - Stakeholders will ask, “How do you know it works?” and “When will you be done?”—and you won’t have clear answers.
 - A team member will unintentionally degrade the solution, leading to weeks of troubleshooting. Progress will slow further as the team works to prevent similar issues.
 - Customers will lose interest due to a lack of visible progress, and stakeholders will grow impatient as you struggle to explain where the system stands and when it will be completed.
 
 And then … nothing good happens for you or the project because you’re stuck.
 
-Unfortunately, even experienced software engineers and data scientists are finding themselves stuck because traditional methodologies and tools don’t address the challenges of GenAI.
+Unfortunately, even experienced software engineers and data scientists find themselves stuck because traditional methodologies and tools don’t address the challenges of GenAI.
 
-## LLMs are Powerful Technologies with Unique Risks
+## LLMs Are Powerful Technologies with Unique Risks
 Traditional software development is notoriously challenging. Business logic must be embedded in arcane languages like C or Python to instruct computers on how to perform tasks. This code doesn’t generalize well, and even the smallest error can render a system useless. Over the past 50 years, we’ve developed methodologies, tools, and frameworks to make this process more efficient. Agile and Lean Startup methodologies help us avoid building products nobody wants, while frameworks like Ruby on Rails reduce the amount of code we need to write.
 
-### LLMs Massively Increase Developer Productivity - But at a Cost
+### LLMs Massively Increase Developer Productivity—But at a Cost
 Generative AI, particularly through large language models (LLMs), offers a more efficient way to build software because it has knowledge of the world and can complete tasks with general direction.
 
 For example, I can instruct an LLM to “remove the comments from this Python script,” and it will do so flawlessly because it understands what a Python comment is. This is far more efficient than writing 20 lines of Python to search for ‘#’ and ‘//’ characters and carefully delete them without affecting the rest of the code.
 
 Generative AI will ultimately enable smaller teams to build more powerful software in less time. However, this power comes with a trade-off: *LLMs are stochastic*. For any given task, an LLM may produce different results each time or even hallucinate—generating convincing responses that are incorrect.
 
-Table 1 highlights ways GenAI projects are different
+Table 1 highlights ways GenAI projects are different.
 
 ## Key Differences Between Traditional Software and GenAI
-| Traditional software | GenAI |
-| -------------------- | ----- |
-| Developer interface   | Compiler or interpreter | LLM API |
-| Interface behavior    | Deterministic           | Stochastic |
-| Primary risk          | Market / Adoption       | Technical |
-| Solution logic        | Written in code         | Inherent in LLM |
-| Rate of change        | Linear                  | Exponential |
-| Frameworks / practices| Mature                  | Non-existent |
-| Iteration cycle time  | Weeks (Sprints)         | Hours |
+| Attribute |Traditional Software | GenAI |
+| -------------------- | ----- | ---------|
+| Developer Interface   | Compiler or interpreter | LLM API |
+| Interface Behavior    | Deterministic           | Stochastic |
+| Primary Risk          | Market / Adoption       | Technical |
+| Solution Logic        | Written in code         | Inherent in LLM |
+| Rate of Change        | Linear                  | Exponential |
+| Frameworks / Practices| Mature                  | Non-existent |
+| Iteration Cycle Time  | Weeks (Sprints)         | Hours |
 
 *Table 1 - LLMs are a new programming interface with different risks than traditional software.*
 
 You’re stuck because you’re trying to apply traditional software product management and engineering principles to GenAI projects. Here is how these differences manifest:
 
-### Ensuring system resilience
+### Ensuring System Resilience
 In traditional software engineering, unit, functional, and integration tests ensure that deterministic functions produce specific outputs from specific inputs. While you still need tests in GenAI to prevent bugs in your Python libraries, a different approach is required to ensure LLMs perform as desired.
 
 Just as a developer can write a software function in many ways, LLMs can produce correct results through various approaches. Moreover, LLM outputs don’t conform to simple pass/fail evaluation criteria. An LLM can generate a result that is mostly correct and still effectively solve the business problem. Conversely, slight wording or formatting changes in a prompt that appear identical to a human evaluator can cause a system to fail catastrophically.
 
-### Planning for technology changes  
+### Planning for Technology Changes  
 Best practices and tools in traditional software engineering don’t evolve as rapidly. Whether you build your product with Ruby on Rails Version 6 or 7 won’t significantly impact its success. A great programmer using a 10-year-old tech stack will still outperform an average programmer using modern tools.
 
 In contrast, the difference between LLM versions, like GPT-3.5 and GPT-4, is so significant that it could either improve your product by 90% or render it obsolete. No level of developer skill can bridge the gap between generating text with GPT-2 and GPT-4.
 
-### Providing transparency  
+### Providing Transparency  
 Providing transparency in traditional software projects is challenging, which is why the industry has developed methodologies like Agile, tools like Jira, and roles like Scrum Master to offer some degree of predictability. Even with these, it remains difficult for project managers to predict when software projects will be completed and how well they will perform. GenAI projects are even more complex.
 
 With no clear way to predict how an LLM will perform, teams struggle to describe how well their solution is working. Unlike traditional software, you can't predict when a GenAI project will be complete because you don’t know what obstacles you’ll face or how you'll overcome them. Additionally, it's difficult to quantify the effectiveness or improvement of your GenAI project.
