@@ -314,27 +314,29 @@ Of the available [13 LLM optimization techniques](https://go.prolego.com/playboo
 # Example: Get a RAG Solution on Track
 Let’s walk through a simple example.
 
-## Goal: policy chat for employees
+## Goal: Policy Chat for Employees
 Your company has numerous internal policy documents covering topics like travel, vacations, and IT security. These policies are managed by different departments, forcing employees to sift through multiple documents to find the answers they need. As a result, they often end up emailing HR for assistance.
 
 To address this, HR has requested that you build a chat interface that allows employees to get answers to common questions without needing to contact HR directly.
 
-## A good start with a basic RAG demo
-You opt to build a retrieval-augmented generation (RAG) solution for your employee policies like Figure 4. A subset of the policy documents is converted into embeddings and stored in a vector database. You then set up the interaction with the LLM and configure Gradio as the user interface.
+## A Good Start with a Basic RAG Demo
+You opt to build a retrieval-augmented generation (RAG) solution for your employee policies, as shown in Figure E1. A subset of the policy documents is converted into embeddings and stored in a vector database. You then set up the interaction with the LLM and configure Gradio as the user interface.
 
-**Figure 4 - A basic RAG workflow for unstructured text documents.**
+![alt text](<images/Figure E1.png>)
+
+*Figure E1 - A basic RAG workflow for unstructured text documents.*
 
 You configure the demo to allow employees to ask policy questions and receive an answer accompanied by references to the relevant source documents.
 
-### First feedback from HR
+### First Feedback from HR
 HR loves your demo and immediately sees how it will reduce their workload. They begin asking common questions about vacation policies, performance reviews, and travel, and provide initial feedback. You start taking notes:
 
-- The demo successfully answers basic questions covered by the indexed policies. However, it struggles with questions related to unindexed policies and occasionally hallucinates, generating incorrect answers. You advise HR to limit their queries to the indexed policies.
+- The demo successfully answers basic questions covered by the indexed policies but struggles with questions related to unindexed policies and occasionally hallucinates, generating incorrect answers. You advise HR to limit their queries to the indexed policies.
 - Some answers are misleading or confusing, but HR notes that the policies themselves are unclear on these points. In practice, HR often relies on state employment laws and current industry best practices to clarify these issues.
 - When HR asks more complex questions, the solution fails to provide accurate answers. In some cases, it misses information from tables and diagrams that were ignored during setup. In others, it struggles to reason through information spread across different sections of the documents.
 - HR also raises a concern that legal might not approve employee use of the solution until there are assurances it won’t expose the company to liabilities.
 
-## And … you’re stuck
+## And … You’re Stuck
 After reviewing your notes, you're uncertain about the next steps. HR clearly wants the solution, but you're unsure how to develop a plan for production deployment.
 
 The biggest challenge is defining the problem more clearly. You don't yet know the specific questions employees will ask or the most accurate answers to provide.
@@ -343,49 +345,53 @@ You have several ideas for improvements, such as adding more policies, parsing d
 
 Given the ambiguity, you decide to build a performance evaluation framework.
 
-## Building your performance evaluation framework
+## Building Your Performance Evaluation Framework
 
-### Generate a representative set of data and tasks
-You start by building a spreadsheet of some expected questions and correct answers:
+### Generate a Representative Set of Data and Tasks
+You start by building a spreadsheet of expected questions and correct answers, like Table 4:
 
-| Question                                                          | Expected Answer                                                                                   |
+| **Question**                                                          | **Expected Answer**                                                                                   |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | If I am late for work, can I make up the time from my lunch break?| No. The handbook mentions that breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. |
-| I want to work another part time in the evenings and weekends. Is this allowed? | Yes, if you notify your manager and HR and the second job does not interfere with your primary job here. You must complete the "Disclosure of Outside Employment" form. |
+| I want to work another part-time job in the evenings and weekends. Is this allowed? | Yes, if you notify your manager and HR, and the second job does not interfere with your primary job here. You must complete the "Disclosure of Outside Employment" form. |
+
+*Table 4 - The initial set of representative tasks for your RAG solution.*
 
 HR reviews your questions and confirms the correct answers.
 
-### Create an evaluation workflow
+### Create an Evaluation Workflow
 You build scripts and configuration files to do the following:
 
-1. Send the questions to your solution
+1. Send the questions to your solution.
 2. Generate an actual answer.
 3. Calculate key metrics like cost and speed.
 4. Record the relevant section from the policies.
-5. Store the results to a CSV file.
+5. Store the results in a CSV file.
 
-### Generate a performance evaluation report
-You import the evaluation results into Excel, visually analyze the results, and record a confidence score (High, Medium, Low) based on your reading of the policies.
+### Generate a Performance Report
+You import the evaluation results into Excel, visually analyze the results, and record a confidence score (High, Medium, Low) based on your reading of the policies, like Table 5.
 
-**Performance evaluation report**
+**Performance Report**
 
-| Question                                                                                     | Expected Answer                                                                                   | Actual answer                                                                                   | Confidence | Source                                           | Metrics         |
+| **Question**                                                                                     | **Expected Answer**                                                                                   | **Actual Answer**                                                                                   | **Confidence** | **Source**                                           | **Metrics**         |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------ | --------------- |
 | If I am late for work, can I make up the time from my lunch break?                           | No. The handbook mentions that breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. | No. Breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. All employees are expected to adhere to their scheduled work hours… | High       | Section 5: Attendance and Break Policies        | 2.3s, $.0003    |
 
-## Productive feedback
+*Table 5 - Performance report for the RAG solution*
+
+## Productive Feedback
 Instead of presenting a demo, you share your performance evaluation report with HR. This time, they offer specific feedback on the questions, expected answers, and confidence scores.
 
 HR also provides insights into the reasons behind poor performance, such as missing source material, ambiguous questions, or general confusion. With this feedback, you quickly identify the most impactful improvement: embedding entire sections of the policy documents instead of just paragraphs.
 
 Your next weekly project status report is well received. Instead of sharing general updates about demos and testing, you present the performance report and explain your decision to change the embedding workflow before exploring more complex options.
 
-## Continuous improvement through PDD
-You quickly get into a productive workflow with HR. They review your performance report in Excel, add questions, review your results and provide context. They also add a few high-risk questions that could create liability concerns from legal.
+## Continuous Improvement Through PDD
+You quickly get into a productive workflow with HR. They review your performance report in Excel, add questions, review your results, and provide context. They also add a few high-risk questions that could create liability concerns from legal.
 
 You make rapid solution improvements by investing in straightforward changes such as adding documents, improving embeddings, and tweaking prompts. You also continuously improve your evaluation workflow and build scripts to automatically generate results. The performance framework allows you to make changes with confidence.
 
-## You’re no longer stuck
+## You’re No Longer Stuck
 PDD has effectively addressed your primary challenges:
 
 - You now have transparency into where your solution is performing well and where it’s falling short.
@@ -394,7 +400,6 @@ PDD has effectively addressed your primary challenges:
 - You can detect potential issues in your solution early.
 
 Additionally, you’ve gained the confidence of your leadership. You’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
-
 ---
 # About 
 ## Why I Created the PDD Project
@@ -424,7 +429,7 @@ Please submit issues and pull requests of your suggestions or feedback. Or email
 ## Acknowledgments
 LLMs are new, and unfortunately, separating the AI hypesters and the real practitioners isn’t easy. Here are some pros whose work I admire who helped make this document better.
 
-Thank you Justin Pounders, Craig Dewalt, Shanif Dhanani, 
+Thank you Justin Pounders, [Craig Dewalt](https://www.linkedin.com/in/craigdewalt/), [Shanif Dhanani](https://www.locusive.com/) for reviewing the early, ugly drafts.
 
 **Copyright**
 Copyright 2024, Prolego, Inc. All rights reserved. 
