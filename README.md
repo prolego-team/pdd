@@ -64,7 +64,7 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 - [Performance-Driven Development Methodology](#performance-driven-development-methodology)
     - [Logically Isolate AI in Your Systems](#logically-isolate-ai-in-your-systems)
     - [Create a Team of AI Systems Engineers](#create-a-team-of-ai-systems-engineers)
-    - [Build a performance evaluation framework](#build-a-performance-evaluation-framework)
+    - [Build a Performance Evaluation Framework](#build-a-performance-evaluation-framework)
     - [Iteratively Optimize Your Solution with Customers](#iteratively-optimize-your-solution-with-customers)
 
 - [Example: Get a RAG Solution on Track](#example-get-a-rag-solution-on-track)
