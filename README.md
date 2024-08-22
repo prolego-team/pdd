@@ -129,15 +129,15 @@ Generative AI will ultimately enable smaller teams to build more powerful softwa
 Table 1 highlights ways GenAI projects are different.
 
 ## Key Differences Between Traditional Software and GenAI
-| Attribute |Traditional Software | GenAI |
-| -------------------- | ----- | ---------|
-| Developer Interface   | Compiler or interpreter | LLM API |
-| Interface Behavior    | Deterministic           | Stochastic |
-| Primary Risk          | Market / Adoption       | Technical |
-| Solution Logic        | Written in code         | Inherent in LLM |
-| Rate of Change        | Linear                  | Exponential |
-| Frameworks / Practices| Mature                  | Non-existent |
-| Iteration Cycle Time  | Weeks (Sprints)         | Hours |
+| Attribute        | Traditional Software       | GenAI                       |
+|-----------------------|----------------------------|-----------------------------|
+| **Developer Interface** | Compiler or interpreter    | LLM API                     |
+| **Interface Behavior**  | Deterministic              | Stochastic                  |
+| **Primary Risk**        | Market / Adoption          | Technical                   |
+| **Solution Logic**      | Written in code            | Inherent in LLM             |
+| **Rate of Change**      | Linear                     | Exponential                 |
+| **Frameworks / Practices** | Mature                 | Non-existent                |
+| **Iteration Cycle Time**  | Weeks (Sprints)        | Hours                       |
 
 *Table 1 - LLMs are a new programming interface with different risks than traditional software.*
 
@@ -204,69 +204,81 @@ Engineers from data science, software engineering, or systems engineering backgr
 ### Assign a Dedicated Engineering Team to Focus on LLM Optimization
 AI systems engineers will build the components that optimize the LLM’s performance, as shown in Figure PD2 above, through a performance evaluation framework.
 
-## Build a Performance Evaluation Framework
-You need a new approach for building solutions with LLMs, one that provides you with granular visibility into how well your solution is working. A performance evaluation framework as illustrated in Figure 2 provides this transparency.
+## Build a performance evaluation framework
+You need a new approach for building solutions with LLMs, one that provides granular visibility into how well your solution is working. A performance evaluation framework, as illustrated in Figure PD3, provides this transparency.
 
-It has four components:
+![alt text](<images/Figure Q2.png>)
+*Figure PD3 - A performance evaluation framework creates transparency into how the LLM is performing. It consists of (1) data and tasks, (2) AI solution, (3) evaluation workflow, and (4) performance report.*
 
-1. A representative set of data and tasks covering the scope of the problem.
-2. The AI solution you will deploy.
-3. An evaluation workflow runs the representative set of data through your solution and evaluates its performance on the tasks.
-4. A performance report showing how well your solution works and calculates key metrics.
+The framework consists of four components:
+
+1. A representative **set of data and tasks** covering the scope of the problem.
+2. The **AI solution** you will deploy.
+3. An **evaluation workflow** that runs the representative set of data through your solution and evaluates its performance on the tasks.
+4. A **performance report** showing how well your solution works and calculating key metrics.
+
+Let's walk through each.
 
 ### 1. Representative set of data and tasks
 The foundation of your framework is a representative set of data and tasks tailored to the solution you’re building. Table 2 lists examples for common LLM solutions.
 
-| LLM Solution           | Data                   | Tasks                                            |
+| **LLM Solution**           | **Data**                   | **Tasks**                                            |
 | ---------------------- | ---------------------- | ------------------------------------------------ |
 | RAG                    | Source documents       | Questions and expected answers                   |
 | Document classification| Set of documents       | Expected classification of each                  |
 | LLM to SQL             | Populated database tables | Questions and expected results from SQL queries |
 
-**Table 2 - Examples of Performance Framework data and tasks for different LLM Solutions. The data and tasks are designed to provide granular transparency into how well your system is working.**
+*Table 2 - Examples of performance evaluation framework data and tasks designed to provide granular transparency.*
 
 This set should cover the full scope of the problem space and be used to evaluate the solution's effectiveness. If hallucinations or mistakes are concerns, create tasks specifically designed to test how the solution handles these issues.
 
-Continuously update and revise this set as long as the solution is in production, and generate new tasks when adding data, changing tasks, or encountering operational anomalies. When legal concerns arise, such as "what if x occurs...," create a task to demonstrate how the solution addresses it.
+Continuously update and revise this set as long as the solution is in production, and generate new tasks when adding data, changing tasks, or encountering operational anomalies. When legal concerns arise, such as "*what if x occurs...*," create a task to demonstrate how the solution addresses it.
 
 Developing a representative set requires significant experience, experimentation, and iteration. The key challenge is determining the right quantity and type of tasks to cover common scenarios and critical edge cases without generating redundant files that don't enhance system robustness.
 
 Some teams also use generated data to mitigate security and legal risks, enabling faster and more efficient testing of new LLMs.
 
-### 2. AI Solution
-The AI solution is the software that transforms the input data into an output by interacting with the LLM. Examples are prompts, data processing scripts, interfaces, prompt orchestrations, agents, and tools.
+### 2. AI solution
+The AI solution is the software that transforms the input data into an output by interacting with the LLM: 
 
-The AI Solution is what you will deploy into production as illustrated previously in Figure 1, including the interfaces to other system components.
+- Prompts
+- Data processing scripts
+- Interfaces
+- Prompt orchestration libraries
+- Agents
+- Tools
+
+The AI solution is what you will deploy into production as discussed previously in [Create Interfaces with Your AI Solution](#create-interfaces-with-your-ai-solution).
 
 ### 3. Evaluation workflow
-You need a scalable way to measure how well your system is performing by running the representative tasks and data sets through your solution and comparing the expected vs the actual outputs.
+You need a scalable way to measure how well your system is performing by running the representative tasks and data sets through your solution and comparing the expected vs. actual outputs.
 
 Table 3 lists three common options teams are currently using.
 
-| Evaluation option | Description                                               | Pro                                                  | Con                                      |
+| **Evaluation Option** | **Description**                                               | **Pro**                                                  | **Con**                                      |
 | ----------------- | --------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------- |
 | Manual inspection | Developer visually inspects expected and actual outputs   | Easiest to start. Most likely way to ensure accuracy. | Slow. Won’t scale.                       |
 | Scripts           | Python scripts detecting presence or absence of words     | Relatively easy to set up. Good at catching obvious errors. Runs fast. | Tedious to maintain. Can miss edge cases. |
-| LLMs              | Send the expected and actual results to an LLM with instructions to evaluate. | Accuracy of manual inspection at scale. | LLMs are still not very good at it.      |
+| LLMs              | Send the expected and actual results to an LLM with instructions to evaluate. | Accuracy of manual inspection at scale. | LLMs are still not very good at it. Can get expensive.      |
 
-**Table 3 - Three techniques for evaluating your AI Solution’s performance.**
+*Table 3 - Three techniques for evaluating your AI solution’s performance.*
 
-OpenAI and others have advocated for using LLMs for your evaluation. In practice, most teams have found the combination of human review, python scripts, and LLMs to be necessary.
+OpenAI and others have advocated for using LLMs for your evaluation. In practice, most teams have found the combination of human review, Python scripts, and LLMs to be necessary.
 
-Additionally, your evaluation workflow will gather key system metrics such as cost, token count, and latency. It must also have a means of providing transparency into the LLM’s sensitivity, such as running the LLMs at different temperatures to generate a confidence interval.
+Additionally, your evaluation workflow will gather key system metrics such as cost, token count, and latency. It must also provide transparency into the LLM’s sensitivity, such as running the LLMs at different temperatures to generate a confidence interval.
 
 ### 4. Performance evaluation report
-Finally, your framework will have a performance evaluation report that gives you transparency into your solution. The report should provide granular performance visibility into every task in your set and higher-level solution metrics.
+Finally, your framework will have a performance evaluation report that provides transparency into your solution. The report should offer granular performance visibility into every task in your set and higher-level solution metrics.
 
 The evaluation report typically contains the following for every task:
 
-- A confidence score comparing the actual vs expected performance by the LLM.
-- The LLMs used.
+- A confidence score comparing the actual vs. expected performance by the LLM.
+- The specific LLMs used (e.g., GPT-4, LLama3-8b).
 - Cost or token count.
 - Latency.
 - Notes or recommendations for improving performance.
 
-Figure 2 has a simple example.
+[Figure PD3](#build-a-performance-evaluation-framework) has a simple example.
 
 Spreadsheets are perfectly fine for performance evaluation reports. You can import CSV files generated by Python scripts as new tabs, and both engineers and customers can quickly do analysis and provide feedback.
 
