@@ -41,7 +41,7 @@
 # Get Your GenAI Project on Track
 Welcome! You're here because your GenAI project is stuck, and you want to get it back on track.
 
-By now, you've likely noticed that while building with large language models (LLMs) is fast, transparency is challenging. It’s tough to know where your application excels, avoid critical errors, make improvements, and predict readiness.
+Building with large language models (LLMs) is fast, but transparency is challenging. It’s tough to know where your application excels, avoid critical errors, make improvements, and predict readiness.
 
 That’s where Performance-Driven Development (PDD) comes in. PDD gives you the clarity you need to confidently manage and deploy GenAI applications.
 
@@ -160,8 +160,15 @@ With no clear way to predict how an LLM will perform, teams struggle to describe
 
 ---
 # Performance-Driven Development Methodology
+Here are four steps for getting your GenAI project on track.
+1. [Logically Isolate AI in Your Systems](#logically-isolate-ai-in-your-systems)
+1. [Create a Team of AI Systems Engineers](#create-a-team-of-ai-systems-engineers)
+1. [Build a Performance Evaluation Framework](#build-a-performance-evaluation-framework)
+1. [Iteratively Optimize Your Solution with Customers](#iteratively-optimize-your-solution-with-customers)
+
 
 ## Logically Isolate AI in Your Systems
+Isolating AI components from the rest of your system’s architecture enables team specialization, scalable and consistent AI capabilities, faster adoption of new models, and transparency.
 
 ### Tightly Integrating LLM API Calls Creates Scaling Challenges
 Many teams begin their GenAI projects by adding LLM API calls within their existing code libraries, as shown in Figure PD1. 
@@ -194,14 +201,12 @@ At best, frameworks like LangChain make it slightly easier to solve simple probl
 
 ## Create a Team of AI Systems Engineers
 
-### LLMs Are a New Programming Interface That Requires Specialization
 Building solutions with LLMs isn’t traditional data science, programming, or machine learning. LLMs are a new programming interface, and it takes 6-12 months to become proficient. We call this role an *AI systems engineer*, combining a data scientist’s experimental mindset with a systems engineer’s big-picture view.
 
 Here is an [AI systems engineer job description](https://www.prolego.com/reports/ai-systems-engineer-job-description) and a video, [The Surprising Skills You Need to Build LLM Applications](https://youtu.be/Wp6LP8yk4I8).
 
 Engineers from data science, software engineering, or systems engineering backgrounds can transition into this role with time and dedication. Even product and project managers with minimal technical experience are successfully building LLM-based solutions.
 
-### Assign a Dedicated Engineering Team to Focus on LLM Optimization
 AI systems engineers will build the components that optimize the LLM’s performance, as shown in Figure PD2 above, through a performance evaluation framework.
 
 ## Build a Performance Evaluation Framework
@@ -400,6 +405,7 @@ PDD has effectively addressed your primary challenges:
 - You can detect potential issues in your solution early.
 
 Additionally, you’ve gained the confidence of your leadership. You’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
+
 ---
 # About 
 ## Why I Created the PDD Project
