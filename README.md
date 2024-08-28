@@ -72,7 +72,7 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 
 ---
 
-<a id="quickstart"></a>
+
 # Quickstart
 Large language models (LLMs) allow rapid development of powerful solutions, but they often produce inconsistent and unpredictable results. You can quickly create a proof-of-concept that mostly works, but pinpointing successes, failures, improvements, and project completion can be challenging. This lack of transparency frustrates you and your leadership. Here's how to get your LLM project on track.
 
@@ -185,7 +185,7 @@ While this is a quick way to start and works for simple, low-risk tasks, it crea
 ### Create Interfaces with Your AI Solution
 A more effective approach is to isolate the AI components of your system—such as LLM interfaces, prompts, prompt orchestration agents, and tools—from the rest of the system's architecture, as illustrated in Figure PD2.
 
-![alt text](<images/Figure PD2.png>)
+![alt text](<images/FigureQ1.png>)
 *Figure PD2 - Logically isolate your AI solution from the rest of your system. The AI solution consists of components that optimize the LLM’s performance, such as prompts, data preprocessing, prompt orchestrations, and tools.*
 
 This design has several scaling advantages:
