@@ -76,7 +76,7 @@ I started this project based on [Prolego's](https://prolego.com) experiences hel
 # Quickstart
 Large language models (LLMs) allow rapid development of powerful solutions, but they often produce inconsistent and unpredictable results. You can quickly create a proof-of-concept that mostly works, but pinpointing successes, failures, improvements, and project completion can be challenging. This lack of transparency frustrates you and your leadership. Here's how to get your LLM project on track.
 
-## 3 Minute Video Intro
+## Three-Minute Video Intro
 
 [![alt text](images/YouTube1.jpg)](https://www.youtube.com/watch?v=MiNG01QndtI)
 
