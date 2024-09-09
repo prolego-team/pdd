@@ -140,7 +140,7 @@ Table 1 highlights ways GenAI projects are different.
 | **Primary Risk**        | Market / Adoption          | Technical                   |
 | **Solution Logic**      | Written in code            | Inherent in LLM             |
 | **Rate of Change**      | Linear                     | Exponential                 |
-| **Frameworks / Practices** | Mature                 | Non-existent                |
+| **Frameworks / Practices** | Mature                 | [Emerging](./Projects.md)                |
 | **Iteration Cycle Time**  | Weeks (Sprints)        | Hours                       |
 
 *Table 1 - LLMs are a new programming interface with different risks than traditional software.*
