@@ -1,0 +1,129 @@
+{
+    "eval_set": [
+        {
+            "question": "Are race driver salaries included in the cost cap?",
+            "contexts": ["In calculating Relevant Costs, the following costs and amounts within Total Costs of the Reporting Group must be excluded (\"Excluded Costs\"):", "All costs of Consideration provided to an F1 Driver, or to a Connected Party of that F1 Driver, in exchange for that F1 Driver providing the services of an F1 Driver to or for the benefit of the F1 Team, together with all travel and accommodation costs in respect of each F1 Driver;"],
+            "ground_truth": "No, F1 driver salaries are not included in the Cost Cap.  F1 driver salaries are exempt."
+        },
+        {
+            "question": "Other than drivers, are any individuals' salaries excluded from the cost cap?",
+            "contexts": ["In calculating Relevant Costs, the following costs and amounts within Total Costs of the Reporting Group must be excluded (\"Excluded Costs\"):", "All costs of Consideration provided to the three individuals (other than any individual in respect of whom all costs of Consideration are excluded pursuant to any other sub-Article of this Article 3.1) in respect of whom the highest aggregate amount of Consideration has been recognised in Total Costs of the Reporting Group during the Reporting Period (the \"Excluded Persons\"), or to a Connected Party of any Excluded Person, in each case in exchange for that Excluded Person providing services to or for the benefit of the F1 Team, together with associated employer’s social security contributions and all travel and accommodation costs in respect of each Excluded Person;"],
+            "ground_truth": "Yes.  The costs associated with the three individuals with highest total \"Consideration\" are exempt from the Cost Cap."
+        },
+        {
+            "question": "According to the Financial Regulations Section 3.1, who are all of the drivers and other individuals whose costs of Consideration are excluded from the cost cap?",
+            "contexts": ["In calculating Relevant Costs, the following costs and amounts within Total Costs of the Reporting Group must be excluded (\"Excluded Costs\"):", "(b) All costs of Consideration provided to an F1 Driver, or to a Connected Party of that F1 Driver, in exchange for that F1 Driver providing the services of an F1 Driver to or for the benefit of the F1 Team, together with all travel and accommodation costs in respect of each F1 Driver;", "(c) All costs of Consideration provided to an Other Racing Driver, or to a Connected Party of that Other Racing Driver, in exchange for that Other Racing Driver providing the services of an Other Racing Driver to or for the benefit of the F1 Team, together with, all travel and accommodation costs in respect of each Other Racing Driver;", "(d) All costs of Consideration provided to the three individuals (other than any individual in respect of whom all costs of Consideration are excluded pursuant to any other sub-Article of this Article 3.1) in respect of whom the highest aggregate amount of Consideration has been recognised in Total Costs of the Reporting Group during the Reporting Period (the \"Excluded Persons\"), or to a Connected Party of any Excluded Person, in each case in exchange for that Excluded Person providing services to or for the benefit of the F1 Team, together with associated employer’s social security contributions and all travel and accommodation costs in respect of each Excluded Person;"],
+            "ground_truth": "The following individuals' salaries are excluded from the cost cap: racing drivers and the three highest earning individuals."
+        },
+        {
+            "question": "Where is this discussed in the FIA regulations:  An independent audit firm may be engaged to assist in reviewing a team’s financial documentation.",
+            "contexts": ["The Cost Cap Administration may engage an Independent Audit Firm to assist in reviewing an F1 Team's Reporting Documentation and to undertake a comparative financial analysis of the Reporting Documentation in order to help identify potential anomalies."],
+            "ground_truth": "This is discussed in Section 6.8 of the FiA Financial Regulations."
+        },
+        {
+            "question": "Who is responsible for investigating breaches of financial regulations?",
+            "contexts": ["The Cost Cap Administration will monitor compliance with these Financial Regulations, investigate instances of suspected non-compliance, and take appropriate enforcement action in respect of any breaches of these Financial Regulations."],
+            "ground_truth": "The Cost Cap Administration will investigate instances of suspected non-compliance."
+        },
+        {
+            "question": "What are the rules regarding the use of the drag reduction system?",
+            "contexts": ["The driver may only activate the adjustable bodywork in a sprint session or the race when he has been notified via the control electronics (see Article 8.2 of the Technical Regulations) that it is enabled. It will be enabled, and may only be used by the driver, if he is less than one (1) second behind another at any of the pre-determined detection points around each track."],
+            "ground_truth": "The drag reduction system (or DRS) can be used by a driver when the gap to the car in front of them is less than one second.  DRS can only be used in certain sectors of the circuit and may not be used in the opening two laps."
+        },
+        {
+            "question": "Is a dual axis steering system allowed?",
+            "contexts": ["The re-alignment of the steered wheels must be uniquely defined by a monotonic function of the rotation of a single steering wheel about a single axis. Furthermore, the inboard. attachment points of the suspensions members connected to the steering system must remain a fixed distance from each other and can only translate in Y."],
+            "ground_truth": "No."
+        },
+        {
+            "question": "What is the minimum allowable thickness of the skid plank?",
+            "contexts": ["The thickness of the plank assembly measured normal to the lower surface must be 10mm ± 0.2mm and must be uniform when new. A minimum thickness of 9mm will be accepted due to wear, and conformity to this provision will be checked at the peripheries of the designated holes."],
+            "ground_truth": "9 mm."
+        },
+        {
+            "question": "How many engines can a driver use in a given season, and what are the penalties if a driver exceeds that number?",
+            "contexts": ["Unless a driver drives for more than one (1) Competitor (see Article 28.4 below), and subject to the additions described below, each driver may use no more than four (4) engines (ICE), four (4) motor generator units-heat (MGU-H), four (4) turbochargers (TC), two (2) energy stores (ES), two (2) control electronics (CE), four (4) motor generator units-kinetic (MGU-K) and eight (8) of each of the four (4) elements constituting a set of Engine exhaust systems during a Championship. For the purpose of this article a set of Engine exhaust systems is deemed to comprise the following four (4) elements: primaries LHS, primaries RHS, secondary LHS and secondary RHS.", "Should a driver use more Power Unit elements than the numbers prescribed in Article 28.2 of any one of the elements during a Championship, a grid place penalty for the race will be imposed upon him at the first Competition during which each additional element is used. Penalties will be applied according to the following table and will be cumulative: a) The first time an additional element is used: Ten (10) grid place penalty for the race. b) The next times an additional element is used: Five (5) grid place penalty for the race. Any of the seven (7) elements will be deemed to have been used once the car’s timing transponder has shown that it has left the pit lane."],
+            "ground_truth": "A driver may not use more than four internal combustion engines.  The penalty is a 10-place grid penalty the first time the number is exceeded and a 5-place grid penalty for each subsequent replacement."
+        },
+        {
+            "question": "Are there illegal defensive moves when racing?",
+            "contexts": ["A driver may not leave the track without justifiable reason. More than one change of direction to defend a position is not permitted. Any driver moving back towards the racing line, having earlier defended his position off-line, should leave at least one car width between his own car and the edge of the track on the approach to the corner. However, manoeuvres liable to hinder other drivers, such as deliberate crowding of a car beyond the edge of the track or any other abnormal change of direction, are strictly prohibited. Any driver who appears guilty of any of the above offences will be reported to the Stewards."],
+            "ground_truth": "Yes, there are illegal defensive moves when racing.  A driver may not make more than one change of direction when defending a position, may not crowd another driver off track or make any other abnormal changes of direction."
+        },
+        {
+            "question": "Are there times when a driver is forced to be medically evaluated following an on-track incident?",
+            "contexts": ["If, after an incident during a TCC, and/or TPC, the Medical Warning Light signals that threshold forces have been exceeded the driver must present himself for examination in the circuit medical centre without delay."],
+            "ground_truth": "Yes. If the Medical Warning Light is illuminated, signalling that threshold forces have been exceeded, then a Medical Delegate must examine the driver as soon as possible."
+        },
+        {
+            "question": "Is there a regulation about drivers walking on or crossing a live track?",
+            "contexts": ["During the period commencing fifteen (15) minutes prior to and ending five (5) minutes after every free practice session, qualifying session and sprint shootout and the period between the commencement of the formation lap which immediately precedes the sprint session and the race and the time when the last car enters the parc fermé, no one is allowed on the track, the pit entry or the pit exit with the exception of: b) Drivers when driving or on foot, having first received permission to do so from a marshal."],
+            "ground_truth": "Yes, there is such a regulation. Drivers are not allowed to walk on track unless a Marshall has given them permission."
+        },
+        {
+            "question": "What penalties are given for a driver causing a collision?",
+            "contexts": ["The stewards may impose any one of the penalties below on any driver involved in an Incident:\na) A five (5) second time penalty. The driver must enter the pit lane, stop in his pit stop position for at least five seconds and then re-join the sprint session or the race. The relevant driver may however elect not to stop, provided he carries out no further pit stopbefore the end of the sprint session or the race. In such cases five (5) seconds will beadded to the elapsed the sprint session or race time of the driver concerned.\nb) A ten (10) second time penalty. The driver must enter the pit lane, stop in his pit stop position for at least ten seconds and then re-join the sprint session or the race. The relevant driver may however elect not to stop, provided he carries out no further pit stop before the end of the sprint session or the race. In such cases ten (10) seconds will be added to the elapsed the sprint session or race time of the driver concerned.\nIn both of the above cases the driver concerned must carry out the penalty the next time he enters the pit lane and, for the avoidance of doubt, this includes any stop the driver makes whilst a VSC or safety car procedure is in use.\nc) A drive-through penalty. The driver must enter the pit lane and re-join the sprint session or the race without stopping.\nd) A ten second stop-and-go time penalty. The driver must enter the pit lane, stop in his pit stop position for at least ten seconds and then re-join the sprint session or the race.\nIf any of the four (4) penalties above are imposed upon a driver, and that driver is unable to serve the penalty due to retirement from the sprint session or the race, the stewards may impose a grid place penalty on the driver at his next race.\nIf any of the four (4) penalties above are imposed during the last three (3) laps, or after the end of a sprint session or a race, Article 54.4b) below will not apply and five seconds will be added to the elapsed time of the driver concerned in the case of (a) above, 10 seconds in the case of (b), 20 seconds in the case of (c) and 30 seconds in the case of (d).\ne) A time penalty.\nf) A reprimand.\ng) A drop of any number of grid positions at the driver’s next race.\nIf any of the seven penalties above are imposed they shall not be subject to appeal.\nh) Disqualification from the results.\ni) Suspension from the driver’s next Competition.\n"],
+            "ground_truth": "There are various penalties that can be imposed depending on the circumstances.  These penalties can include a 5-second time penalty, a 10-second time penalty, a drive-through penalty or a 10-second stop-and-go penalty."
+        },
+        {
+            "question": "Where is this discussed in the FIA regulations:  Each competitor must conduct initial scrutinering four hours prior to P1 and submit their completed declaration no more than 2 hours before the start of P1.",
+            "contexts": ["Formula 1 Sporting Regulations, 31) SCRUTINEERING, 31.1. Each Competitor will be required to carry out initial scrutineering of his cars which will commence four (4) hours prior to the start of P1 and submit the duly completed declaration no later than two (2) hours before the start of P1."],
+            "ground_truth": "This is described in Section 31.1 of the FIA Formula One Sporting Regulations."
+        },
+        {
+            "question": "How big must the rear view mirrors be?",
+            "contexts": ["The reflective surface of each mirror must satisfy the following conditions:", "Its four edges must project orthogonally onto the edges of a vertical rectangle which is 200mm wide and 50mm high (+2mm/-0mm for both dimensions), with a radius of up to 10mm applied to each corner."],
+            "ground_truth": "The reflective surface of rear view mirrors must be 200x50 mm."
+        },
+        {
+            "question": "What regulation would pertain to this scenario that took place during a Grand Prix race: \"Coming into Turn 6, notwithstanding that Car 11 was alongside Car 4, the driver of Car 11 dived in late, missed the apex of the corner and understeered towards the outside of the corner colliding with Car 4.\"",
+            "contexts": ["Causing a collision, repetition of serious mistakes or the appearance of a lack of control over  the car (such as leaving the track) will be reported  to the Stewards and may entail the imposition of  penalties up to and including the disqualification of  any driver concerned."],
+            "ground_truth": "2023 FIA International Sporting Code, Appendix L, Chapter IV Regulation 2, and Regulation 2(d) specifically, deal with on-track collisions and would apply to this scenario."
+        },
+        {
+            "question": "What is the consequence of a team changing the suspension setup once a car is in parc ferme?",
+            "contexts": ["A Competitor may not modify any part on the car or make changes to the set-up of the suspension whilst the car is being held under parc fermé conditions. In the case of a breach of this Article, the relevant driver must start the race from the pit lane and follow the procedures prescribed in Article 44.2."],
+            "ground_truth": "The consequence of a team changing the suspension setup once a car is in parc fermé is that the relevant driver must start the race from the pit lane."
+        },
+        {
+            "question": "Consider the following scenario and describe the penalties that could be applied, if any: \"Car 22 had entered the pits after a shunt at Turn 13 of Lap 1 where the right rear tyre had come off and the rim was touching the track. The driver had indicated to the team while returning to the pits that the shunt was significant and that he did not think it was possible to continue. The team apparently did a visual check on the car, refitted a new tyre and rim and released the car. The right rear suspension failed almost immediately after the release and the car had to be driven slowly back to the pits and retired. It was determined that the team could have done more to check if the car was safe before releasing it. The team representative acknowledged that more could have been done.\"",
+            "contexts": ["In all of the cases detailed in this Article 34.14, a car will be deemed to have been released either when it has been driven out of its designated garage area (when leaving from the garage) or after it has completely cleared its pit stop position following a pit stop.\na) Cars must not be released from a garage or pit stop position in way that could endanger pit lane personnel or another driver.\nb) Competitors must provide a means of clearly establishing, when being viewed from both above and in the front of the car, when a car was released.\nc) If a car is deemed to have been released in an unsafe condition during any free practice, or qualifying session or sprint shootout, the stewards may drop the driver such number of grid positions as they consider appropriate. Such penalty will be applied to the race unless the infringement has been committed during the sprint shootout, in which case the penalty will be applied to the sprint session.\nd) If a car is deemed to have been released in an unsafe condition during a sprint session or a race, a penalty in accordance with Article 54.3d) will be imposed on the driver concerned. However, if the driver retires from the sprint session or the race as a result of the car being released in an unsafe condition a fine may be imposed upon the Competitor.\ne) An additional penalty will be imposed on any driver who, in the opinion of the stewards, continues to drive a car knowing it to have been released in an unsafe condition."],
+            "ground_truth": "A fine imposed on the team is an appropriate penalty. This decision considers the regulation stipulation for cases where a car released in an unsafe condition causes the driver to retire from the session or race."
+        },
+        {
+            "question": "Can I drive in Formula 1 if I have prosthetic leg?",
+            "contexts": ["The following are compatible with the granting of an international licence... prosthetic limbs, if the functional result is equal or near to normal;"],
+            "ground_truth": "Yes. Drivers with prosthetic limbs can be given an international license if the functional result is normal."
+        },
+        {
+            "question": "What happens when drivers have the same number of points at the end of the season?",
+            "contexts": ["If two or more constructors or drivers finish the Championship with the same number of points, the higher place in the Championship (in either case) shall be awarded to:\na) The holder of the greatest number of first places in a race.\nb) If the number of first places is the same, the holder of the greatest number of second places in a race.\nc) If the number of second places is the same, the holder of the greatest number of third places in a race and so on until a winner emerges.\nd) If this procedure fails to produce a result, the FIA will nominate the winner according to such criteria as it thinks fit."],
+            "ground_truth": "If two drivers end the season with the same number of points, then the tie will be broken based on race wins, i.e. the number of first place wins, the number of second place wins, etc."
+        },
+        {
+            "question": "What is the maximum number of races in a season?",
+            "contexts": ["2023 FIA Formula One Sporting Regulations Regulation 5) CHAMPIONSHIP COMPETITIONS, section 5.6: The maximum number of Competitions in the Championship is 24 the minimum is 8."],
+            "ground_truth": "The maximum number of races in a season is 24."
+        },
+        {
+            "question": "Can you mix tires of the same compound from different sets?",
+            "contexts": ["Sporting Regulation 30.2 b): A complete set of tyres will be deemed to comprise two (2) front and two (2) rear tyres all of which must be of the same specification and as allocated by the FIA, however, sets of the same specification may be mixed following the qualifying session."],
+            "ground_truth": "Yes, tires of the same compound from different sets can be mixed following the qualifying session."
+        },
+        {
+            "question": "What is the maximum number of cars that can be entered into a race?",
+            "contexts": ["2023 FIA Formula One Sporting Regulations Regulation 8.6: No more than twenty-six (26) cars will be admitted to the Championship, two (2) being entered by each Competitor"],
+            "ground_truth": "The maximum number of cars that can be admitted to a race is twenty-six."
+        },
+        {
+            "question": "How many drivers can represent a single team?",
+            "contexts": ["2023 FIA Formula One Sporting Regulations, Regulation 32.1: During a Championship each Competitor will be permitted to use a maximum of four (4) drivers in races."],
+            "ground_truth": "A single team can represent a maximum of four (4) drivers in races during a Championship."
+        },
+        {
+            "question": "Under what conditions will a race be red flagged?",
+            "contexts": ["2023 FIA Formula One Sporting Regulations under Regulation 57.1: If Competitors or officials are placed in immediate physical danger by cars running on the track, and the clerk of the course deems circumstances are such that the track cannot be negotiated safely, even behind the safety car, the sprint session or the race will be suspended. Should it become necessary to suspend the sprint session or the race, the clerk of the course will order red flags to be shown at all marshal posts and the abort lights to be shown at the Line."],
+            "ground_truth": "A race will be red-flagged if competitors or officials are placed in immediate physical danger by cars running on the track and the clerk of the course deems circumstances are such that the track cannot be negotiated safely, even behind the safety car. This is outlined in the."
+        }
+    ]
+}

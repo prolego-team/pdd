@@ -1,0 +1,27 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fiaregs"
+version = "0.1.0"
+authors = [
+  {name="Prolego, Inc.", email="justin@prolego.com"},
+]
+description = "An experimental LLM library with examples and demonstrations."
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    # "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dynamic = ["dependencies"]
+# dependencies = [
+#   "aicore[search] @ file:/lib/aicore-0.1.0.tar.gz",
+# ]
+
+[project.urls]
+"Homepage" = "https://github.com/prolego-team/fiaregs"
