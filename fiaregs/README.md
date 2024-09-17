@@ -12,6 +12,8 @@ From the UI there are three modes that you can use:
 
 The evaluation script uses option 2 by default, but other options can be turned on in the `main` function `scripts/eval.py`. (This is not a "user-editable" option at present.)
 
+> The first launch of this application will take several minutes to download model(s) and embed the regulations. These results are cached so that subsequent launches will be much quicker.
+
 ## Installation
 
 ```bash
