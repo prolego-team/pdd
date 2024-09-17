@@ -10,11 +10,11 @@ from datasets import Dataset
 from aicore.llm.client import get_llm_client
 from aicore.llm import openaiapi as openai
 from aicore.llm.tracker import UsageTracker
-from aicore.performance.data import Evaluation, evaluation_to_dict
+from aicore.performance.data import Evaluation
 from aicore.performance.format import to_excel
 from aicore.performance.autoeval import evaluate
 
-from fiaregs import drivers, custom_eval_metrics
+from fiaregs import drivers
 
 
 # Suppress a runtime warning re: tokenizer parallelism and multiple threads.
@@ -88,19 +88,7 @@ def main():
     eval_model = openai.start_chat('gpt-4o', api_client)
 
     # search = drivers.driver_llm_only(llm_model)
-    # search = drivers.driver_llm_with_search(
-    #     llm_model,
-    #     DATA_DIR,
-    #     DOC_DIR,
-    #     REGS,
-    #     PRE_EXPAND,
-    #     POST_EXPAND,
-    #     model_name,
-    #     cross_encoder_name,
-    #     top_k,
-    #     include_definitions=use_definitions
-    # )
-    search = drivers.driver_llm_with_agentic_search(
+    search = drivers.driver_llm_with_search(
         llm_model,
         DATA_DIR,
         DOC_DIR,
@@ -112,6 +100,18 @@ def main():
         top_k,
         include_definitions=use_definitions
     )
+    # search = drivers.driver_llm_with_agentic_search(
+    #     llm_model,
+    #     DATA_DIR,
+    #     DOC_DIR,
+    #     REGS,
+    #     PRE_EXPAND,
+    #     POST_EXPAND,
+    #     model_name,
+    #     cross_encoder_name,
+    #     top_k,
+    #     include_definitions=use_definitions
+    # )
 
     eval_set = Dataset.from_json('data/eval_set.json', field='eval_set')
     # eval_set = Dataset.from_dict(eval_set[:2])

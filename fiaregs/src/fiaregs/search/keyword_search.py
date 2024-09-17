@@ -23,6 +23,7 @@ try:
 except:
     import nltk
     nltk.download('punkt')
+    nltk.download('punkt_tab')
 
 try:
     WordNetLemmatizer().lemmatize('testing')

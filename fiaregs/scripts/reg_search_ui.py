@@ -28,6 +28,8 @@ import sys
 import gradio as gr
 
 from fiaregs.drivers import setup
+from aicore.llm.client import get_llm_client
+from aicore.llm import openaiapi as openai
 
 # Suppress a runtime warning re: tokenizer parallelism and multiple threads.
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -68,13 +70,29 @@ def run_demo():
     model_name = 'all-mpnet-base-v2'
     cross_encoder_name = 'cross-encoder/ms-marco-MiniLM-L-12-v2'
     llm_model_name = 'gpt-4'
+    llm_api_key = 'OPENAI_API_KEY'
+    use_definitions = True
     top_k = 10
 
-    # search, agentic_search, generate_response = setup(config)
+    api_client = get_llm_client(llm_api_key)
+    llm_model = openai.start_chat(llm_model_name, api_client)
+
+    search, agentic_search, generate_response = setup(
+        llm_model,
+        DATA_DIR,
+        DOC_DIR,
+        REGS,
+        PRE_EXPAND,
+        POST_EXPAND,
+        model_name,
+        cross_encoder_name,
+        top_k,
+        use_definitions,
+    )
 
     with gr.Blocks() as demo:
         gr.Markdown('# FIA Regulation Matching')
-        question_text = gr.Textbox('Memo item or question:', label='Search box', interactive=True)
+        question_text = gr.Textbox('Question:', label='Search box', interactive=True)
         with gr.Row():
             quick_search_button = gr.Button('Quick Search')
             search_summarize_button = gr.Button('Search and Summarize')
@@ -110,7 +128,7 @@ def run_demo():
         ).then(
             fn=agentic_search,
             inputs=[question_text, regulation_texts, definition_texts],
-            outputs=[regulation_texts, definition_texts, llm_response]
+            outputs=llm_response
         )
 
     demo.queue()

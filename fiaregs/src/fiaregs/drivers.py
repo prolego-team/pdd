@@ -1,4 +1,4 @@
-import os
+from typing import Iterator
 import re
 import json
 import logging
@@ -438,10 +438,6 @@ def driver_llm_with_agentic_search(
                     tool_output_messages = [openai.UserMessage(f'There was a problem calling a tool: {e}')]
                 messages += tool_output_messages
 
-        # for message in messages:
-        #     print()
-        #     print(message)
-
         return messages[-1].content
 
     return generate_response
@@ -450,128 +446,155 @@ def driver_llm_with_agentic_search(
 ##
 
 
-# def setup(config: dict):
-#     """Setup everything needed for the demo."""
-#     data_dir = Path(config['data_dir'])
-#     pre_expand = config['pre_expand']
-#     post_expand = config['post_expand']
-#     rerank_flag = config['rerank']
-#     similarity_model_name = config['similarity_model_name']
-#     cross_encoder_name = config['cross_encoder_name']
-#     llm_model_name = config['llm_model_name']
-#     top_k = config['top_k']
+def setup(
+        llm_model: Callable,
+        data_dir: Path,
+        doc_dir: Path,
+        reg_map: dict,
+        pre_expand: bool,
+        post_expand: bool,
+        similarity_model_name: str,
+        cross_encoder_model_name: str | None,
+        top_k: int,
+        include_definitions: bool
+    ):
+    """Setup everything needed for the demo."""
+    # NOTE: There is redundancy in this function and those above.
+    # This function supports a unifed UI, where the above functions
+    # support modularity of a single type of interaction (RAG mode).
+    # They could be refactored to share more code... at some future time...
+
+    # Load data
+    doc_trees, definition_ids, definitions_flat = load_data(doc_dir, reg_map)
+
+    config = {
+        'pre_expand': pre_expand,
+        'similarity_model_name': similarity_model_name
+    }
+    run_id = get_dict_hash(config)
+    run_dir = data_dir / Path(str(run_id))
+    if not run_dir.exists():
+        run_dir.mkdir(parents=True)
+        with open(run_dir / 'config.json', 'w') as f:
+            json.dump(config, f)
+
+    search_definitions = make_definition_search(definition_ids, definitions_flat)
+    search_regulations = make_regulation_search(
+        doc_trees,
+        run_dir,
+        similarity_model_name,
+        cross_encoder_model_name,
+        pre_expand,
+        post_expand,
+        top_k
+    )
+    compound_search = make_compound_search(
+        search_regulations,
+        search_definitions,
+        doc_trees,
+        definitions_flat
+    )
+
+    function_descriptions = [
+        {
+            'name': 'lookup_definition',
+            'description': 'Lookup a word or phrase in the glossary to get its definition.',
+            'parameters': {
+                'type': 'object',
+                'properties': {
+                    'query': {
+                        'type': 'string',
+                        'description': 'A word or phrase for which you want the definition.'
+                    },
+                },
+                'required': ['query']
+            }
+        },
+        {
+            'name': 'regulation_search',
+            'description': 'Search regulations using semantic search.',
+            'parameters': {
+                'type': 'object',
+                'properties': {
+                    'query': {
+                        'type': 'string',
+                        'description': 'Search query in the form of a question.'
+                    },
+                },
+                'required': ['query']
+            }
+        }
+    ]
+    function_descriptions = [{'type': 'function', 'function': func} for func in function_descriptions]
+    functions = {
+        'lookup_definition': lambda query: '\n\n'.join(search_definitions(query)),
+        'regulation_search': lambda query: REG_DIVIDER.join(
+            [result_to_string(result, doc_trees) for result in search_regulations(query)]
+        )
+    }
 
 
-
-#     function_descriptions = [
-#         {
-#             'name': 'lookup_definition',
-#             'description': 'Lookup a word or phrase in the glossary to get its definition.',
-#             'parameters': {
-#                 'type': 'object',
-#                 'properties': {
-#                     'query': {
-#                         'type': 'string',
-#                         'description': 'A word or phrase for which you want the definition.'
-#                     },
-#                 },
-#                 'required': ['query']
-#             }
-#         },
-#         {
-#             'name': 'regulation_search',
-#             'description': 'Search regulations using semantic search.',
-#             'parameters': {
-#                 'type': 'object',
-#                 'properties': {
-#                     'query': {
-#                         'type': 'string',
-#                         'description': 'Search query in the form of a question.'
-#                     },
-#                 },
-#                 'required': ['query']
-#             }
-#         }
-#     ]
-#     function_descriptions = [{'type': 'function', 'function': func} for func in function_descriptions]
+    def generate_response(question: str, regulations: str | None, definitions: str | None) -> str:
+        """Generate a simple response."""
+        log.info('Calling LLM')
+        if not include_definitions:
+            definitions = None
+        context = build_context(regulations, definitions)
+        prompt = context + f'\n\nHere is the question: {question}'
+        messages = [
+            openai.SystemMessage(SYSTEM_MESSAGE),
+            openai.UserMessage(prompt)
+        ]
+        log.info('Calling LLM')
+        return llm_model(messages).content
 
 
-#     def generate_response(question: str, regulations: str | None, definitions: str | None) -> str:
-#         """Generate a simple response."""
-#         log.info('Calling LLM')
-#         context = build_context(regulations, definitions)
-#         prompt = context + f'\n\nHere is the question: {question}'
-#         messages = [
-#             openai.SystemMessage(SYSTEM_MESSAGE),
-#             openai.UserMessage(prompt)
-#         ]
-#         return llm_model(messages).content
+    def agentic_search(question: str, regulations: str, definitions) -> Iterator[str]:
+        """Agent-based search."""
 
+        if not include_definitions:
+            definitions = None
 
-#     def agentic_search(question: str, regulations: str, definitions) -> str:
-#         """Agent-based search."""
+        system_message_new = (
+            SYSTEM_MESSAGE +
+            '\n\nIf you need additional information, if you need to refine your response, '
+            'or if the provided regulations do not appear to answer the question, '
+            'you should run additional regulation searches using the `regulation_search` function. '
+            'When using this function your queries should rephrase or refine the original '
+            'question; don\'t repeat the original question becuase you will get the same results. '
+            'You can also look up any word or phrase that you are not sure about using the '
+            '`lookup_definition` function.\n\n'
+            'When you have the answer write "Final Answer:" followed by the response.'
+        )
+        context = build_context(regulations, definitions)
+        prompt = context + f'\n\nHere is the question: {question}'
+        messages = [
+            openai.SystemMessage(system_message_new),
+            openai.UserMessage(prompt)
+        ]
 
-#         # Prep agent functions and prompts
-#         def regulation_search_wrapper(query):
-#             results = search_regulations(query)
-#             return REG_DIVIDER.join(
-#                 [result_to_string(result) for result in results]
-#             )
+        call_count = 0
+        while call_count < MAX_LLM_CALLS_PER_INTERACTION:
+            log.info('Calling LLM')
+            response = llm_model(messages, tools=function_descriptions)
+            messages.append(response)
+            if response.tool_calls is None:
+                break
+            else:
+                log.info('Calling tools...')
+                try:
+                    tool_output_messages = [
+                        openai.ToolMessage(
+                            str(functions[tool.function_name](**tool.function_args)),
+                            tool.tool_call_id)
+                        for tool in response.tool_calls
+                    ]
+                except Exception as e:
+                    tool_output_messages = [openai.UserMessage(f'There was a problem calling a tool: {e}')]
+                messages += tool_output_messages
 
-#         def definition_search_wrapper(query):
-#             results = search_definitions(query)
-#             return '\n\n'.join(results)
+            yield messages[-1].content
 
-#         functions = {
-#             'lookup_definition': definition_search_wrapper,
-#             'regulation_search': regulation_search_wrapper
-#         }
-#         system_message_new = (
-#             SYSTEM_MESSAGE +
-#             '\n\nIf you need additional information, if you need to refine your response, '
-#             'or if the provided regulations do not appear to answer the question, '
-#             'you should run additional regulation searches using the `regulation_search` function. '
-#             'When using this function your queries should rephrase or refine the original '
-#             'question; don\'t repeat the original question becuase you will get the same results. '
-#             'You can also look up any word or phrase that you are not sure about using the '
-#             '`lookup_definition` function.\n\n'
-#             'When you have the answer write "Final Answer:" followed by the response.'
-#         )
-#         context = build_context(regulations, definitions)
-#         agent = make_react_agent(
-#             system_message_new,
-#             llm_model,
-#             function_descriptions,
-#             functions,
-#             MAX_LLM_CALLS_PER_INTERACTION,
-#         )
+    # return generate_response
 
-#         # Agent loop
-#         prompt = context + '\n\n' + question
-#         status = ''
-#         for message in agent(prompt):
-#             if message.role=='user':
-#                 status = 'User asked a question to the LLM.  Awaiting LLM response...'
-#             elif message.role=='tool':
-#                 status = 'A search was performed.  Awaiting LLM response...'
-#                 log.info('Function call: ' + f'\n\n_<name={message.name}, function_call={message.function_call}>_\n')
-#                 response = message.content.replace('Observation: ', '')
-#                 if message.name=='regulation_search':
-#                     # Add new regulations to exist list
-#                     regulations_old = regulations.split(REG_DIVIDER)
-#                     regulations_new = response.split(REG_DIVIDER)
-#                     regulations = [reg for reg in regulations_new if reg not in regulations_old]
-#                     regulations += regulations_old
-#                     regulations = REG_DIVIDER.join(regulations)
-#                 elif message.name=='lookup_definition':
-#                     definitions = response + '\n\n' + definitions
-#             elif message.role=='assistant':
-#                 if message.content and 'Final Answer:' in message.content:
-#                     status = message.content
-#                 else:
-#                     status = 'The assistant responded.  Awaiting LLM next response...'
-
-#             log.info(status)
-#             yield regulations, definitions, status
-
-#     return compound_search, agentic_search, generate_response
+    return compound_search, agentic_search, generate_response

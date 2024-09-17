@@ -19,9 +19,6 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dynamic = ["dependencies"]
-# dependencies = [
-#   "aicore[search] @ file:/lib/aicore-0.1.0.tar.gz",
-# ]
 
 [project.urls]
 "Homepage" = "https://github.com/prolego-team/fiaregs"
