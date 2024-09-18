@@ -11,7 +11,7 @@ Performance reports provide transparency into a generative AI project's performa
 # Current report
 
 Download the current report (Excel file):
-[Performance report](Example RAG on FIA regs/Performance Reports/Performance Report.xlsx)
+[Performance report](<Performance Report.xlsx>)
 
 # History
 
