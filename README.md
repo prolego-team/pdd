@@ -323,10 +323,14 @@ Of the available [13 LLM optimization techniques](https://go.prolego.com/playboo
 # Example: Get a RAG Solution on Track
 Let’s walk through a simple example.
 
-## Goal: Policy Chat for Employees
-Your company has numerous internal policy documents covering topics like travel, vacations, and IT security. These policies are managed by different departments, forcing employees to sift through multiple documents to find the answers they need. As a result, they often end up emailing HR for assistance.
+## Goal: RAG on the Formula 1 Rules
+In [Episode 17 of our Generative AI Series](https://www.youtube.com/watch?v=LmiFeXH-kq8) we demonstrated a LLM Retrieval Augmented Generation (RAG) chat application built on the regulations issued by Formula 1’s governing body, the Fédération Internationale de l'Automobile (FIA). We also [gave a demo and provided a detailed technical discussion](https://www.youtube.com/watch?v=Y_Nr9-IWF8o) during a subsequent YouTube live discussion.
 
-To address this, HR has requested that you build a chat interface that allows employees to get answers to common questions without needing to contact HR directly.
+The application allows fans to ask detailed questions about the sport’s rules. Figure E0 is a screenshot.
+
+![alt text](<images/Figure E0.png>)
+
+*Figure E0 -  A screenshot of The FIA Regulation Search RAG application answers user questions about the sport’s complex rules.*
 
 ## A Good Start with a Basic RAG Demo
 You opt to build a retrieval-augmented generation (RAG) solution for your employee policies, as shown in Figure E1. A subset of the policy documents is converted into embeddings and stored in a vector database. You then set up the interaction with the LLM and configure Gradio as the user interface.
