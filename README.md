@@ -321,10 +321,13 @@ Of the available [13 LLM optimization techniques](https://go.prolego.com/playboo
 
 ---
 # Example: Get a RAG Solution on Track
-Let’s walk through a simple example.
+Let’s walk through a simple example. The source code, installation instructions, and reports are in the [Example-RAG-Formula-1](/Example-RAG-Formula-1/) directory.
 
 ## Goal: RAG on the Formula 1 Rules
-In [Episode 17 of our Generative AI Series](https://www.youtube.com/watch?v=LmiFeXH-kq8) we demonstrated a LLM Retrieval Augmented Generation (RAG) chat application built on the regulations issued by Formula 1’s governing body, the Fédération Internationale de l'Automobile (FIA). We also [gave a demo and provided a detailed technical discussion](https://www.youtube.com/watch?v=Y_Nr9-IWF8o) during a subsequent YouTube live discussion.
+In [Episode 17 of our Generative AI Series](https://www.youtube.com/watch?v=LmiFeXH-kq8) we demonstrated a LLM Retrieval Augmented Generation (RAG) chat application built on the regulations issued by Formula 1’s governing body, the Fédération Internationale de l'Automobile (FIA). We also: 
+- [held a demo and detailed technical discussion](https://www.youtube.com/watch?v=Y_Nr9-IWF8o), 
+- [published a study](https://go.prolego.com/llm-rag-study) on the importance of context for RAG, and
+- shared the results [on a Webinar with Pinecone](https://www.youtube.com/watch?v=GkQ52svNUhM).
 
 The application allows fans to ask detailed questions about the sport’s rules. Figure E0 is a screenshot.
 
