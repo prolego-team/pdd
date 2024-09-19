@@ -16,11 +16,13 @@ The evaluation script uses option 2 by default, but other options can be turned 
 
 ## Installation
 
+This version uses OpenAI. Set environment variable OPENAI_API_KEY to your key.
+
 ```bash
 python -m venv .venv  # Optional, recommended
 source .venv/bin/activate
 pip install --upgrade pip
-cd fiaregs
+cd Example-RAG-Formula-1
 pip install .
 ```
 
