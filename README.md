@@ -335,31 +335,38 @@ The application allows fans to ask detailed questions about the sport’s rules.
 
 *Figure E0 -  A screenshot of The FIA Regulation Search RAG application answers user questions about the sport’s complex rules.*
 
-## A Good Start with a Basic RAG Demo
-You opt to build a retrieval-augmented generation (RAG) solution for your employee policies, as shown in Figure E1. A subset of the policy documents is converted into embeddings and stored in a vector database. You then set up the interaction with the LLM and configure Gradio as the user interface.
+## Basic RAG Design
+The solution follows the basic RAG design as shown in Figure E1. The Documents are the Formula 1 rules located here along with additional context as [described in the study](https://go.prolego.com/llm-rag-study).
 
 ![alt text](<images/Figure E1.png>)
 
 *Figure E1 - A basic RAG workflow for unstructured text documents.*
 
-You configure the demo to allow employees to ask policy questions and receive an answer accompanied by references to the relevant source documents.
+Since we cover the solution and optimizations in the links above, I'll jump to the PDD methodology.
 
-### First Feedback from HR
-HR loves your demo and immediately sees how it will reduce their workload. They begin asking common questions about vacation policies, performance reviews, and travel, and provide initial feedback. You start taking notes:
+## Summary Peformance Reports - Key to Stakeholder Communication
+The [Performance Reports Folder](/Example-RAG-Formula-1/Performance-Report/) provides details and this summary table:
 
-- The demo successfully answers basic questions covered by the indexed policies but struggles with questions related to unindexed policies and occasionally hallucinates, generating incorrect answers. You advise HR to limit their queries to the indexed policies.
-- Some answers are misleading or confusing, but HR notes that the policies themselves are unclear on these points. In practice, HR often relies on state employment laws and current industry best practices to clarify these issues.
-- When HR asks more complex questions, the solution fails to provide accurate answers. In some cases, it misses information from tables and diagrams that were ignored during setup. In others, it struggles to reason through information spread across different sections of the documents.
-- HR also raises a concern that legal might not approve employee use of the solution until there are assurances it won’t expose the company to liabilities.
+| Date      | Total tasks | Average Confidence | Average input tokens | Average output tokens | Average Time [s] | Notes and Recommendations             |
+|-----------|-------------|--------------------|----------------------|-----------------------|------------------|----------------------------------------|
+| 7/24/24   | 10          | MEDIUM             | 54                   | 77                    | 1.64             | Simple QA with gpt-3.5                |
+| 7/31/24   | 25          | LOW                | 62                   | 86                    | 1.83             | Inaccuracies due to model             |
+| 8/7/24    | 25          | MEDIUM             | 62                   | 295                   | 9.85             | Simple QA with gpt-4.0                |
+| 8/14/24   | 25          | MEDIUM-HIGH        | 1497                 | 97                    | 3.74             | Overall improved with gpt-4           |
+| 8/21/24   | 25          | HIGH               | 1855                 | 130                   | 5.87             | High accuracy on all but 1            |
 
-## And … You’re Stuck
-After reviewing your notes, you're uncertain about the next steps. HR clearly wants the solution, but you're unsure how to develop a plan for production deployment.
+This level of summary is ideal for stakeholder communication. It describes how the system is evolving over time based on the number of tasks (questions) and how well it is performing.
 
-The biggest challenge is defining the problem more clearly. You don't yet know the specific questions employees will ask or the most accurate answers to provide.
+### Performance Report details
+Dowload [the Excel spreadsheet](/Example-RAG-Formula-1/Performance-Report/Performance%20Report.xlsx). The Summary tab contains the same table as above, while each tab contains the performance details for that week as shown in Figure E2.
 
-You have several ideas for improvements, such as adding more policies, parsing documents by page instead of paragraph, refining system prompts, incorporating additional sources like state employment laws, experimenting with different LLMs, fine-tuning the LLM, capturing data from complex structures like tables and figures, and using agents to handle more complex reasoning. However, you're unsure how to prioritize these options.
+![alt text](<images/Figure E2.png>)
 
-Given the ambiguity, you decide to build a performance evaluation framework.
+*Figure E2 - Each tab in the Performance Report spreadsheet contains the results for that week.*
+
+Here is an explanation of the first row in the 7-24 tab. (I transposed the table for easier reading).
+
+
 
 ## Building Your Performance Evaluation Framework
 
