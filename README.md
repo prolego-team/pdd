@@ -321,86 +321,94 @@ Of the available [13 LLM optimization techniques](https://go.prolego.com/playboo
 
 ---
 # Example: Get a RAG Solution on Track
-Let’s walk through a simple example.
+Let’s walk through a simple example. The source code, installation instructions, and reports are in the [Example-RAG-Formula-1](/Example-RAG-Formula-1/) directory.
 
-## Goal: Policy Chat for Employees
-Your company has numerous internal policy documents covering topics like travel, vacations, and IT security. These policies are managed by different departments, forcing employees to sift through multiple documents to find the answers they need. As a result, they often end up emailing HR for assistance.
+## Goal: RAG on the Formula 1 Rules
+In [Episode 17 of our Generative AI Series](https://www.youtube.com/watch?v=LmiFeXH-kq8) we demonstrated a LLM Retrieval Augmented Generation (RAG) chat application built on the regulations issued by Formula 1’s governing body, the Fédération Internationale de l'Automobile (FIA). We also: 
+- [held a demo and detailed technical discussion](https://www.youtube.com/watch?v=Y_Nr9-IWF8o), 
+- [published a study](https://go.prolego.com/llm-rag-study) on the importance of context for RAG, and
+- shared the results [on a Webinar with Pinecone](https://www.youtube.com/watch?v=GkQ52svNUhM).
 
-To address this, HR has requested that you build a chat interface that allows employees to get answers to common questions without needing to contact HR directly.
+The application allows fans to ask detailed questions about the sport’s rules. Figure E0 is a screenshot.
 
-## A Good Start with a Basic RAG Demo
-You opt to build a retrieval-augmented generation (RAG) solution for your employee policies, as shown in Figure E1. A subset of the policy documents is converted into embeddings and stored in a vector database. You then set up the interaction with the LLM and configure Gradio as the user interface.
+![alt text](<images/Figure E0.png>)
+
+*Figure E0 -  A screenshot of The FIA Regulation Search RAG application answers user questions about the sport’s complex rules.*
+
+## Basic RAG Design
+The solution follows the basic RAG design as shown in Figure E1. The Documents are the Formula 1 rules located here along with additional context as [described in the study](https://go.prolego.com/llm-rag-study).
 
 ![alt text](<images/Figure E1.png>)
 
 *Figure E1 - A basic RAG workflow for unstructured text documents.*
 
-You configure the demo to allow employees to ask policy questions and receive an answer accompanied by references to the relevant source documents.
+Since we cover the solution and optimizations in the links above, I'll jump to the PDD methodology.
 
-### First Feedback from HR
-HR loves your demo and immediately sees how it will reduce their workload. They begin asking common questions about vacation policies, performance reviews, and travel, and provide initial feedback. You start taking notes:
+## Summary Peformance Reports - Key to Stakeholder Communication
+The [Performance Reports Folder](/Example-RAG-Formula-1/Performance-Report/) provides details and this summary table:
 
-- The demo successfully answers basic questions covered by the indexed policies but struggles with questions related to unindexed policies and occasionally hallucinates, generating incorrect answers. You advise HR to limit their queries to the indexed policies.
-- Some answers are misleading or confusing, but HR notes that the policies themselves are unclear on these points. In practice, HR often relies on state employment laws and current industry best practices to clarify these issues.
-- When HR asks more complex questions, the solution fails to provide accurate answers. In some cases, it misses information from tables and diagrams that were ignored during setup. In others, it struggles to reason through information spread across different sections of the documents.
-- HR also raises a concern that legal might not approve employee use of the solution until there are assurances it won’t expose the company to liabilities.
+| Date      | Total tasks | Average Confidence | Average input tokens | Average output tokens | Average Time [s] | Notes and Recommendations             |
+|-----------|-------------|--------------------|----------------------|-----------------------|------------------|----------------------------------------|
+| 7/24/24   | 10          | MEDIUM             | 54                   | 77                    | 1.64             | Simple QA with gpt-3.5                |
+| 7/31/24   | 25          | LOW                | 62                   | 86                    | 1.83             | Inaccuracies due to model             |
+| 8/7/24    | 25          | MEDIUM             | 62                   | 295                   | 9.85             | Simple QA with gpt-4.0                |
+| 8/14/24   | 25          | MEDIUM-HIGH        | 1497                 | 97                    | 3.74             | Overall improved with gpt-4           |
+| 8/21/24   | 25          | HIGH               | 1855                 | 130                   | 5.87             | High accuracy on all but 1            |
 
-## And … You’re Stuck
-After reviewing your notes, you're uncertain about the next steps. HR clearly wants the solution, but you're unsure how to develop a plan for production deployment.
+This level of summary is ideal for stakeholder communication. It describes how the system is evolving over time based on the number of tasks (questions) and how well it is performing.
 
-The biggest challenge is defining the problem more clearly. You don't yet know the specific questions employees will ask or the most accurate answers to provide.
+### Performance Report details
+Dowload [the Excel spreadsheet](/Example-RAG-Formula-1/Performance-Report/Performance%20Report.xlsx). The Summary tab contains the same table as above, while each tab contains the performance details for that week as shown in Figure E2.
 
-You have several ideas for improvements, such as adding more policies, parsing documents by page instead of paragraph, refining system prompts, incorporating additional sources like state employment laws, experimenting with different LLMs, fine-tuning the LLM, capturing data from complex structures like tables and figures, and using agents to handle more complex reasoning. However, you're unsure how to prioritize these options.
+![alt text](<images/Figure E2.png>)
 
-Given the ambiguity, you decide to build a performance evaluation framework.
+*Figure E2 - Each tab in the Performance Report spreadsheet contains the results for that week.*
 
+Here is an explanation of the first row in the 7-24 tab. (I transposed the table for easier reading).
+| Column           | First Row                                                                                                                                                                                                                                                                                                                                               | Explanation                                                                                                                                                           |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Task             | F1 QA                                                                                                                                                                                                                                                                                                                                                  | The task we're asking the LLM to perform: Answer user questions on F1 Rules. Other possible tasks include error-checking or guardrails.                                                     |
+| Question         | Are race driver salaries included in the cost cap?                                                                                                                                                                                                                                                                                                      | An example question asked by the user.                                                |
+| Context          | In calculating Relevant Costs, the following costs and amounts within Total Costs of the Reporting Group must be excluded (“Excluded Costs”): All costs of Consideration provided to an F1 Driver, or to a Connected Party of that F1 Driver providing the services of an F1 Driver to or for the benefit of the F1 Team, together with all travel and accommodation costs in respect of each F1 Driver. | The information from the source documents (the F1 rules) required to correctly answer the question. Important for troubleshooting. If you're not providing the correct context to the LLM, your limitation is in retrieval. |
+| Model            | gpt-3.5-turbo-0125                                                                                                                                                                                                                                                                                                                                     | The model used to generate the response.                                                                                                               |
+| Input Tokens     | 48                                                                                                                                                                                                                                                                                                                                                      | Number of tokens (words) used as input to the model.                                                                                                     |
+| Generated Tokens | 49                                                                                                                                                                                                                                                                                                                                                      | Number of tokens the model generated in response.                                                                                                                      |
+| Elapsed Time     | 1.21                                                                                                                                                                                                                                                                                                                                                       | Time taken by the model to generate the response.                                                                                                                      |
+| Expected         | No, F1 driver salaries are not included in the Cost Cap. F1 driver salaries are exempt.                                                                                                                                                                                                                                                                 | The correct answer to the user question. Human-derived from the correct context.|
+| Actual           | No, race driver salaries are not included in the cost cap for Formula 1 teams. The cost cap primarily focuses on the team’s expenditure related to designing, developing, and running the cars. Driver salaries are separate from the cost cap regulations.                                                                                                                                               | The system-generated response to the question. Compare to the Expected and generate Eval notes and Confidence. |
+| Confidence       | 3                                                                                                                                                                                                                                                                                                                                                       | A subjective score of the model's overall performance on the task. In this case 1,2,3 (Low, Medium, High). Can be generated via python scripts, human review, or LLMs. |
+| Eval Notes       | Explanation: The actual response accurately conveys that race driver salaries are not included in the cost cap for Formula 1 teams and provides additional context about what the cost cap covers, which aligns with the expected response.                                                                                                              | Subjective evaluation of the model's performance on the task. Can be LLM-generated with additional developer notes.       |
 ## Building Your Performance Evaluation Framework
+Now that you've had a chance to review a perforance report, let's walk through the steps in generating them.
 
 ### Generate a Representative Set of Data and Tasks
-You start by building a spreadsheet of expected questions and correct answers, like Table 4:
+You start by building a spreadsheet of expected questions and correct answers:
 
-| **Question**                                                          | **Expected Answer**                                                                                   |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| If I am late for work, can I make up the time from my lunch break?| No. The handbook mentions that breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. |
-| I want to work another part-time job in the evenings and weekends. Is this allowed? | Yes, if you notify your manager and HR, and the second job does not interfere with your primary job here. You must complete the "Disclosure of Outside Employment" form. |
+ | **Question**                                                                 | **Expected Answer**                                                                                                           |
+|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| How big must the rear view mirrors be?                                        | The reflective surface of rear view mirrors must be 200x50 mm.                                                                |
+| Are there times when a driver is forced to be medically evaluated following an on-track incident? | Yes. If the Medical Warning Light is illuminated, signaling that threshold forces have been exceeded, then a Medical Delegate must examine the driver as soon as possible. |
 
-*Table 4 - The initial set of representative tasks for your RAG solution.*
-
-HR reviews your questions and confirms the correct answers.
+You can also gather correct Context from the source documents and any other information relevant to your system design.
 
 ### Create an Evaluation Workflow
-You build scripts and configuration files to do the following:
+You then build scripts and configuration files to do the following:
 
 1. Send the questions to your solution.
 2. Generate an actual answer.
-3. Calculate key metrics like cost and speed.
-4. Record the relevant section from the policies.
-5. Store the results in a CSV file.
+3. Calculate key evaluation metrics like cost, speed and retrieved context.
+5. Store the results in a spreadsheet or other human-readable format.
 
-### Generate a Performance Report
-You import the evaluation results into Excel, visually analyze the results, and record a confidence score (High, Medium, Low) based on your reading of the policies, like Table 5.
+You can start by doing this manually before automating it with scripts and LLMs. Check out these files:
 
-**Performance Report**
-
-| **Question**                                                                                     | **Expected Answer**                                                                                   | **Actual Answer**                                                                                   | **Confidence** | **Source**                                           | **Metrics**         |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------ | --------------- |
-| If I am late for work, can I make up the time from my lunch break?                           | No. The handbook mentions that breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. | No. Breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. All employees are expected to adhere to their scheduled work hours… | High       | Section 5: Attendance and Break Policies        | 2.3s, $.0003    |
-
-*Table 5 - Performance report for the RAG solution*
-
-## Productive Feedback
-Instead of presenting a demo, you share your performance evaluation report with HR. This time, they offer specific feedback on the questions, expected answers, and confidence scores.
-
-HR also provides insights into the reasons behind poor performance, such as missing source material, ambiguous questions, or general confusion. With this feedback, you quickly identify the most impactful improvement: embedding entire sections of the policy documents instead of just paragraphs.
-
-Your next weekly project status report is well received. Instead of sharing general updates about demos and testing, you present the performance report and explain your decision to change the embedding workflow before exploring more complex options.
+- Evaluation Set (JSON) at [eval_set.json](/Example-RAG-Formula-1/data/eval_set.json). Evaluation questions, expected answers, and correct context in a JSON file.
+- Evaluation Script (python) at [eval.py](/Example-RAG-Formula-1/scripts/eval.py). Master script that imports relevant libraries, generates results from AI solution and stores in excel format.
 
 ## Continuous Improvement Through PDD
-You quickly get into a productive workflow with HR. They review your performance report in Excel, add questions, review your results, and provide context. They also add a few high-risk questions that could create liability concerns from legal.
+Once you build your basic evaluation workflow you can begin iteratively improving your solution: adding questions, review your results, identifying limitations, and making improvmenets.
 
-You make rapid solution improvements by investing in straightforward changes such as adding documents, improving embeddings, and tweaking prompts. You also continuously improve your evaluation workflow and build scripts to automatically generate results. The performance framework allows you to make changes with confidence.
+You can also continuously improve your evaluation workflow and scripts to automatically generate results. The performance framework allows you to make changes with confidence.
 
-## You’re No Longer Stuck
 PDD has effectively addressed your primary challenges:
 
 - You now have transparency into where your solution is performing well and where it’s falling short.
@@ -408,7 +416,7 @@ PDD has effectively addressed your primary challenges:
 - You can focus on the highest-impact improvements rather than relying on trial and error.
 - You can detect potential issues in your solution early.
 
-Additionally, you’ve gained the confidence of your leadership. You’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
+Additionally, you’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
 
 ---
 # About 
