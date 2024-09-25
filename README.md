@@ -379,52 +379,36 @@ Here is an explanation of the first row in the 7-24 tab. (I transposed the table
 | Confidence       | 3                                                                                                                                                                                                                                                                                                                                                       | A subjective score of the model's overall performance on the task. In this case 1,2,3 (Low, Medium, High). Can be generated via python scripts, human review, or LLMs. |
 | Eval Notes       | Explanation: The actual response accurately conveys that race driver salaries are not included in the cost cap for Formula 1 teams and provides additional context about what the cost cap covers, which aligns with the expected response.                                                                                                              | Subjective evaluation of the model's performance on the task. Can be LLM-generated with additional developer notes.       |
 ## Building Your Performance Evaluation Framework
+Now that you've had a chance to review a perforance report, let's walk through the steps in generating them.
 
 ### Generate a Representative Set of Data and Tasks
-You start by building a spreadsheet of expected questions and correct answers, like Table 4:
+You start by building a spreadsheet of expected questions and correct answers:
 
-| **Question**                                                          | **Expected Answer**                                                                                   |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| If I am late for work, can I make up the time from my lunch break?| No. The handbook mentions that breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. |
-| I want to work another part-time job in the evenings and weekends. Is this allowed? | Yes, if you notify your manager and HR, and the second job does not interfere with your primary job here. You must complete the "Disclosure of Outside Employment" form. |
+ | **Question**                                                                 | **Expected Answer**                                                                                                           |
+|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| How big must the rear view mirrors be?                                        | The reflective surface of rear view mirrors must be 200x50 mm.                                                                |
+| Are there times when a driver is forced to be medically evaluated following an on-track incident? | Yes. If the Medical Warning Light is illuminated, signaling that threshold forces have been exceeded, then a Medical Delegate must examine the driver as soon as possible. |
 
-*Table 4 - The initial set of representative tasks for your RAG solution.*
-
-HR reviews your questions and confirms the correct answers.
+You can also gather correct Context from the source documents and any other information relevant to your system design.
 
 ### Create an Evaluation Workflow
-You build scripts and configuration files to do the following:
+You then build scripts and configuration files to do the following:
 
 1. Send the questions to your solution.
 2. Generate an actual answer.
-3. Calculate key metrics like cost and speed.
-4. Record the relevant section from the policies.
-5. Store the results in a CSV file.
+3. Calculate key evaluation metrics like cost, speed and retrieved context.
+5. Store the results in a spreadsheet or other human-readable format.
 
-### Generate a Performance Report
-You import the evaluation results into Excel, visually analyze the results, and record a confidence score (High, Medium, Low) based on your reading of the policies, like Table 5.
+You can start by doing this manually before automating it with scripts and LLMs. Check out these files:
 
-**Performance Report**
-
-| **Question**                                                                                     | **Expected Answer**                                                                                   | **Actual Answer**                                                                                   | **Confidence** | **Source**                                           | **Metrics**         |
-| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------ | --------------- |
-| If I am late for work, can I make up the time from my lunch break?                           | No. The handbook mentions that breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. | No. Breaks from work are a privilege and cannot be used to account for an individual's late arrival or early departure. All employees are expected to adhere to their scheduled work hours… | High       | Section 5: Attendance and Break Policies        | 2.3s, $.0003    |
-
-*Table 5 - Performance report for the RAG solution*
-
-## Productive Feedback
-Instead of presenting a demo, you share your performance evaluation report with HR. This time, they offer specific feedback on the questions, expected answers, and confidence scores.
-
-HR also provides insights into the reasons behind poor performance, such as missing source material, ambiguous questions, or general confusion. With this feedback, you quickly identify the most impactful improvement: embedding entire sections of the policy documents instead of just paragraphs.
-
-Your next weekly project status report is well received. Instead of sharing general updates about demos and testing, you present the performance report and explain your decision to change the embedding workflow before exploring more complex options.
+- Evaluation Set (JSON) at [eval_set.json](/Example-RAG-Formula-1/data/eval_set.json). Evaluation questions, expected answers, and correct context in a JSON file.
+- Evaluation Script (python) at [eval.py](/Example-RAG-Formula-1/scripts/eval.py). Master script that imports relevant libraries, generates results from AI solution and stores in excel format.
 
 ## Continuous Improvement Through PDD
-You quickly get into a productive workflow with HR. They review your performance report in Excel, add questions, review your results, and provide context. They also add a few high-risk questions that could create liability concerns from legal.
+Once you build your basic evaluation workflow you can begin iteratively improving your solution: adding questions, review your results, identifying limitations, and making improvmenets.
 
-You make rapid solution improvements by investing in straightforward changes such as adding documents, improving embeddings, and tweaking prompts. You also continuously improve your evaluation workflow and build scripts to automatically generate results. The performance framework allows you to make changes with confidence.
+You can also continuously improve your evaluation workflow and scripts to automatically generate results. The performance framework allows you to make changes with confidence.
 
-## You’re No Longer Stuck
 PDD has effectively addressed your primary challenges:
 
 - You now have transparency into where your solution is performing well and where it’s falling short.
@@ -432,7 +416,7 @@ PDD has effectively addressed your primary challenges:
 - You can focus on the highest-impact improvements rather than relying on trial and error.
 - You can detect potential issues in your solution early.
 
-Additionally, you’ve gained the confidence of your leadership. You’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
+Additionally, you’re able to demonstrate consistent progress, provide clear transparency, and estimate when your solution will be ready for production.
 
 ---
 # About 
